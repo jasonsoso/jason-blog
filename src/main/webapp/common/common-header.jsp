@@ -5,6 +5,7 @@
 
 <link href="${ctx }/resources/bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="${ctx }/resources/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="${ctx }/resources/css/admin.css" rel="stylesheet">
 
 <!--[if lt IE 9]>
    <script src="${ctx }/resources/js/html5.js"></script>
@@ -16,16 +17,3 @@
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="${ctx }/resources/bootstrap/ico/apple-touch-icon-114-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="${ctx }/resources/bootstrap/ico/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed" href="${ctx }/resources/bootstrap/ico/apple-touch-icon-57-precomposed.png">
-
-<style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-      label {
-		display: inline;
-	  }
-</style>

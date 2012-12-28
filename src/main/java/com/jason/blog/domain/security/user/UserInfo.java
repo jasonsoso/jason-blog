@@ -8,6 +8,9 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.security.authentication.encoding.PasswordEncoder;
@@ -82,12 +85,19 @@ public class UserInfo extends AbstractDomainObject{
 	public UserInfo encodePassword(PasswordEncoder encoder) {
 		return setPassword(encoder.encodePassword(getPassword(), getUsername()));
 	}
-	
+	@NotNull(message="用户名不能为空！") 
+	@Size(min = 6, max = 20,message="用户名长度必须在6~20之间！")
 	private String username;
+	
 	private String truename;
+	
 	private String password;
+
+	@Pattern(regexp = "[0-9a-z\\-\\_A-Z]+@[0-9a-z\\-\\_A-Z]+\\.[a-z]{2,}",message="Email格式不正确！")
 	private String email;
+	
 	private String phone;
+	
 	private boolean accountNonExpired = true;
 	private boolean accountNonLocked = true;
 	private boolean credentialsNonExpired = true;

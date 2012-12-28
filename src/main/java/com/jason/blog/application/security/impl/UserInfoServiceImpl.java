@@ -3,6 +3,8 @@ package com.jason.blog.application.security.impl;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +15,9 @@ import com.jason.blog.infrastruture.persist.hibernate.query.Page;
 
 @Transactional
 public class UserInfoServiceImpl implements UserInfoService {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserInfoServiceImpl.class);
+
 	private UserInfoRepository userInfoRepository;
 
 	@Autowired

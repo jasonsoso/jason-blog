@@ -13,6 +13,9 @@
      http://www.springframework.org/schema/context 
      http://www.springframework.org/schema/context/spring-context-3.0.xsd" >
 	
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
 	<import resource="classpath:/META-INF/spring/application-security.xml"/>
 	<import resource="classpath:/META-INF/spring/application-root.xml"/>
 </beans>

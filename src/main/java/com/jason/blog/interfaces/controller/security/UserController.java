@@ -81,10 +81,11 @@ public class UserController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String create(@Valid UserInfo entity, BindingResult result, HttpServletRequest request) {
+	public String create(@Valid UserInfo entity, BindingResult result, HttpServletRequest request,Model model) {
 
 		if (result.hasErrors()) {
-			return null;
+			model.addAttribute("roleList", roleService.query("from Role"));
+			return "security/user/form";
 		}
 
 		HibernateHelper.mergeByIds(
@@ -148,9 +149,10 @@ public class UserController extends ControllerSupport {
 			}
 			
 			userInfoService.store(entity);
-
+			success("用户修改成功！");
 		} catch (Exception e) {
-			return null;
+			error("修改用户失败，请核实数据后重新提交！");
+			//return null;
 		}
 		
 		return REDIRECT_LIST;

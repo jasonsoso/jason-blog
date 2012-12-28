@@ -18,6 +18,7 @@
           	<!-- <div class="page-header">
 					<h3>资源管理</h3>
 			</div> -->
+			
 			<!-- 面包屑 -->
 			<ul class="breadcrumb">
 			  <li>
@@ -56,7 +57,8 @@
 			    <label class="control-label" for="username">*账号</label>
 			    <div class="controls">
 			        <form:input path="username"  placeholder="username"/>
-			    	<p class="help-block">必填.</p>
+			        <form:errors path="username" cssClass="formError"/>
+			    	<p class="help-block">必填.用户名长度必须在6~20之间！</p>
 			    </div>
 			  </div>
 			  <div class="control-group">
@@ -81,6 +83,7 @@
 			    <label class="control-label" for="email">*Email</label>
 			    <div class="controls">
 			        <form:input path="email"  placeholder="email"/>
+			        <form:errors path="email" cssClass="formError" />
 			    </div>
 			  </div>
 			  <div class="control-group boolean optional">

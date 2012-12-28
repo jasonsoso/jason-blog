@@ -17,6 +17,10 @@
           	<!-- <div class="page-header">
 					<h3>资源管理</h3>
 			</div> -->
+			<div class="alert alert-error">
+				<a class="close" data-dismiss="alert" href="#">×</a>
+				${message.type } ${message.text }
+			</div>
 			<!-- 面包屑 -->
 			<ul class="breadcrumb">
 			  <li>
