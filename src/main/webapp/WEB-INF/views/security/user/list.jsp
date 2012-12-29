@@ -14,15 +14,15 @@
       <div class="row-fluid">
         <%@include file="/WEB-INF/views/admin/left.jsp" %>
         <div class="span9">
-          	<!-- <div class="page-header">
-					<h3>资源管理</h3>
-			</div> -->
-			<div class="alert alert-error">
-				<a class="close" data-dismiss="alert" href="#">×</a>
-				${message.type } ${message.text }
-			</div>
-			<!-- 面包屑 -->
-			<ul class="breadcrumb">
+          	
+            <c:if test="${not empty message}">
+                 <div class="alert alert-${message.type }">
+                    <a class="close" data-dismiss="alert" href="#">×</a>
+                     ${message.text }
+                </div>
+            </c:if>
+			
+			<ul class="breadcrumb"><!-- 面包屑 -->
 			  <li>
 			    <a href="${ctx }/admin">首页</a> <span class="divider">/</span>
 			  </li>

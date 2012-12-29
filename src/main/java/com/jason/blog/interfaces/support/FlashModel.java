@@ -6,13 +6,15 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 
-
 public class FlashModel {
+
 	static final String FLASH_MODEL_ATTRIBUTE = FlashModel.class.getName();
 
 	/**
@@ -83,6 +85,10 @@ public class FlashModel {
 
 	private static final String MESSAGE_KEY = "message";
 
+	/**
+	 * Message object
+	 * @author Jason
+	 */
 	public static final class Message {
 
 		private final MessageType type;

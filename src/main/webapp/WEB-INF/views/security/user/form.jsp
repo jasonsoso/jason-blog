@@ -6,21 +6,21 @@
     <title>杰森博客 管理后台</title>
     <%@include file="/common/taglibs.jsp" %>
 	<%@include file="/common/common-header.jsp" %>
- </head>
-
-  <body>
+</head>
+<body>
 	<%@include file="/WEB-INF/views/admin/header.jsp" %>
-
     <div class="container-fluid">
       <div class="row-fluid">
         <%@include file="/WEB-INF/views/admin/left.jsp" %>
         <div class="span9">
-          	<!-- <div class="page-header">
-					<h3>资源管理</h3>
-			</div> -->
+			<c:if test="${not empty message}">
+			     <div class="alert alert-${message.type }">
+	                <a class="close" data-dismiss="alert" href="#">×</a>
+	                 ${message.text }
+	            </div>
+			</c:if>
 			
-			<!-- 面包屑 -->
-			<ul class="breadcrumb">
+			<ul class="breadcrumb"><!-- 面包屑 -->
 			  <li>
 			    <a href="${ctx }/admin">首页</a> <span class="divider">/</span>
 			  </li>

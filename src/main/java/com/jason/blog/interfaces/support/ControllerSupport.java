@@ -8,15 +8,20 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
+
+import com.jason.blog.interfaces.support.FlashModel.Message;
+import com.jason.blog.interfaces.support.FlashModel.MessageType;
 
 
 public abstract class ControllerSupport extends MultiActionController {
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 
 	/**
+	 * Redirect Success
 	 * @param success
 	 */
 	public final void success(String success) {
@@ -24,13 +29,23 @@ public abstract class ControllerSupport extends MultiActionController {
 	}
 
 	/**
+	 * Redirect Error
 	 * @param error
 	 */
 	public final void error(String error) {
 		FlashModel.setErrorMessage(error);
 	}
+	/**
+	 * Forward Error
+	 * @param error
+	 * @param model
+	 */
+	public final void error(Model model,String error) {
+		model.addAttribute(FlashModel.FLASH_MODEL_ATTRIBUTE,new Message(MessageType.error, error));
+	}
 
 	/**
+	 * Redirect Warning
 	 * @param warning
 	 */
 	public final void warning(String warning) {
@@ -38,6 +53,7 @@ public abstract class ControllerSupport extends MultiActionController {
 	}
 
 	/**
+	 * Redirect Info
 	 * @param info
 	 */
 	public final void info(String info) {
@@ -45,6 +61,7 @@ public abstract class ControllerSupport extends MultiActionController {
 	}
 
 	/**
+	 * Binder Date
 	 * @param binder
 	 */
 	@InitBinder

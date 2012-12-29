@@ -28,9 +28,16 @@ import com.jason.blog.interfaces.support.ControllerSupport;
 @Controller
 @RequestMapping(value = "/security/user")
 public class UserController extends ControllerSupport {
+	
 	private static final String REDIRECT_LIST = "redirect:/security/user/list";
+	
+	@Autowired
+	private UserInfoService userInfoService;
+	@Autowired
+	private RoleService roleService;
 
 	/**
+	 * user list
 	 * @param page
 	 * @param model
 	 * @return
@@ -39,29 +46,19 @@ public class UserController extends ControllerSupport {
 	public String list(Page<UserInfo> page, HttpServletRequest request, Model model) {
 
 		HQLQuery query = null;
-
-		if (isQueryAccordingToRole(request)) {
-
+		if (StringUtils.isNotBlank(request.getParameter("roleId"))) {
 			query = new HQLQuery().table("select u from UserInfo u join u.roles role")
 									.like("username", request.getParameter("name"))
 									.eq("role.id", request.getParameter("roleId"))
 									.orderBy("u.username");
-		}
-
-		else {
-
+		} else {
 			query = new HQLQuery().table("UserInfo")
 									.like("username", request.getParameter("name"))
 									.orderBy("username");
 		}
-
 		page = userInfoService.queryPage(page, query.hql(), query.values());
 		model.addAttribute(page).addAttribute("roleList", roleService.query("from Role"));
 		return "security/user/list";
-	}
-
-	private boolean isQueryAccordingToRole(HttpServletRequest request) {
-		return StringUtils.isNotBlank(request.getParameter("roleId"));
 	}
 
 	/**
@@ -70,7 +67,6 @@ public class UserController extends ControllerSupport {
 	 */
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public String create(Model model) {
-
 		model.addAttribute(new UserInfo()).addAttribute("roleList", roleService.query("from Role"));
 		return "security/user/form";
 	}
@@ -85,17 +81,17 @@ public class UserController extends ControllerSupport {
 
 		if (result.hasErrors()) {
 			model.addAttribute("roleList", roleService.query("from Role"));
+			error(model, "创建用户失败，请核对数据!");
 			return "security/user/form";
 		}
-
 		HibernateHelper.mergeByIds(
 									entity.getRoles(),
 									entity.getRoleMap().values(),
 									Role.class
 								);
-
 		entity.encodePassword(new Md5PasswordEncoder());
 		userInfoService.store(entity);
+		success("创建用户成功！");
 		return REDIRECT_LIST;
 	}
 
@@ -138,32 +134,17 @@ public class UserController extends ControllerSupport {
 										Role.class
 									);
 
-			// user has modified password
-			if (passwordHasModified(origPassword, entity.getPassword())) {
+			if (passwordHasModified(origPassword, entity.getPassword())) {// user has modified password
 				entity.encodePassword(new Md5PasswordEncoder());
-			}
-
-			// user didnot want to modify password
-			else {
+			} else { // user didnot want to modify password
 				entity.setPassword(origPassword);
 			}
-			
 			userInfoService.store(entity);
 			success("用户修改成功！");
 		} catch (Exception e) {
 			error("修改用户失败，请核实数据后重新提交！");
-			//return null;
 		}
-		
 		return REDIRECT_LIST;
-	}
-
-	private boolean usernameHasModified(String origUsername, String newUsername) {
-		return !StringUtils.equals(origUsername, newUsername);
-	}
-
-	private boolean passwordHasModified(String origPassword, String newPassword) {
-		return StringUtils.isNotBlank(newPassword) && !StringUtils.equals(origPassword, newPassword);
 	}
 
 	/**
@@ -174,11 +155,9 @@ public class UserController extends ControllerSupport {
 	public String delete(HttpServletRequest request) {
 
 		String[] items = EntityUtils.nullSafe(request.getParameterValues("items"), new String[] {});
-
 		for (String item : items) {
 			delete(item);
 		}
-
 		return REDIRECT_LIST;
 	}
 
@@ -191,9 +170,25 @@ public class UserController extends ControllerSupport {
 		userInfoService.delete(id);
 		return REDIRECT_LIST;
 	}
+	
+	/**
+	 * username  is modified
+	 * @param origUsername
+	 * @param newUsername
+	 * @return
+	 */
+	private boolean usernameHasModified(String origUsername, String newUsername) {
+		return !StringUtils.equals(origUsername, newUsername);
+	}
+	
+	/**
+	 * password is modified
+	 * @param origPassword
+	 * @param newPassword
+	 * @return
+	 */
+	private boolean passwordHasModified(String origPassword, String newPassword) {
+		return StringUtils.isNotBlank(newPassword) && !StringUtils.equals(origPassword, newPassword);
+	}
 
-	@Autowired
-	private UserInfoService userInfoService;
-	@Autowired
-	private RoleService roleService;
 }

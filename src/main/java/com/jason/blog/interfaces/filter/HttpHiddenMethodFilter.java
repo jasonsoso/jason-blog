@@ -53,9 +53,6 @@ public class HttpHiddenMethodFilter extends OncePerRequestFilter {
 		return !("POST".equals(request.getMethod()) && StringUtils.isNotBlank(methodValue));
 	}
 
-	/**
-	 * @author loudyn
-	 */
 	public class HttpHiddenMethodRequestWrapper extends HttpServletRequestWrapper {
 		private final String method;
 
