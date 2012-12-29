@@ -1,6 +1,7 @@
 package com.jason.blog.interfaces.controller.security;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -74,7 +75,7 @@ public class AuthorityController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String create(Authority entity, BindingResult result, HttpServletRequest request,Model model) {
+	public String create(@Valid Authority entity, BindingResult result, HttpServletRequest request,Model model) {
 		if (result.hasErrors()) {
 			model.addAttribute("resourceList", resourceService.query("from Resource"));
 			error(model, "创建权限失败，请核对数据!");

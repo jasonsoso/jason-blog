@@ -14,9 +14,12 @@
       <div class="row-fluid">
         <%@include file="/WEB-INF/views/admin/left.jsp" %>
         <div class="span9">
-          	<!-- <div class="page-header">
-					<h3>资源管理</h3>
-			</div> -->
+          	<c:if test="${not empty message}">
+                 <div class="alert alert-${message.type }">
+                    <a class="close" data-dismiss="alert" href="#">×</a>
+                     ${message.text }
+                </div>
+            </c:if>
 			<!-- 面包屑 -->
 			<ul class="breadcrumb">
 			  <li>
@@ -35,6 +38,7 @@
 	              <span>列表</span>
 	            </a>
 	          </li>
+	          <se:authorize ifAnyGranted="A_SECURITY_RESOURCE_EDIT">
 	          <li title="新增"  class="icon new_collection_link ">
 	            <a class="pjax" href="${ctx }/security/resource/create">
 	              <i class="icon-plus"></i>
@@ -47,6 +51,7 @@
 	              <span>删除</span>
 	            </a>
 	          </li>
+	          </se:authorize>
 			</ul>
 
 			<form id="myForm" action="${ctx }/security/resource/list" method="get">

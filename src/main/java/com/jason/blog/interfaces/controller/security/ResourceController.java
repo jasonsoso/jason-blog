@@ -24,8 +24,12 @@ import com.jason.blog.interfaces.support.ControllerSupport;
 @RequestMapping(value = "/security/resource")
 public class ResourceController extends ControllerSupport {
 	private static final String REDIRECT_LIST = "redirect:/security/resource/list";
+	
+	@Autowired
+	private ResourceService resourceService;
 
 	/**
+	 * resource list
 	 * @param page
 	 * @param model
 	 * @return
@@ -58,12 +62,13 @@ public class ResourceController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String create(@Valid Resource entity, BindingResult result) {
+	public String create(@Valid Resource entity, BindingResult result,Model model) {
 
 		if (result.hasErrors()) {
-			return null;
+			error(model, "创建资源失败，请核对数据!");
+			return "security/resource/form";
 		}
-
+		success("创建资源成功！");
 		resourceService.store(entity);
 		return REDIRECT_LIST;
 	}
@@ -92,8 +97,9 @@ public class ResourceController extends ControllerSupport {
 			Resource entity = resourceService.get(id);
 			bind(request, entity);
 			resourceService.store(entity);
+			success("资源修改成功！");
 		} catch (Exception e) {
-			return null;
+			error("修改资源失败，请核实数据后重新提交！");
 		}
 
 		return REDIRECT_LIST;
@@ -111,7 +117,7 @@ public class ResourceController extends ControllerSupport {
 		for (String item : items) {
 			delete(item);
 		}
-
+		success("删除资源成功！");
 		return REDIRECT_LIST;
 	}
 
@@ -123,9 +129,8 @@ public class ResourceController extends ControllerSupport {
 	public String delete(@PathVariable("id") String id) {
 
 		resourceService.delete(id);
+		success("删除资源成功！");
 		return REDIRECT_LIST;
 	}
 
-	@Autowired
-	private ResourceService resourceService;
 }

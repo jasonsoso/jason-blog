@@ -15,9 +15,12 @@
       <div class="row-fluid">
         <%@include file="/WEB-INF/views/admin/left.jsp" %>
         <div class="span9">
-          	<!-- <div class="page-header">
-					<h3>资源管理</h3>
-			</div> -->
+          	<c:if test="${not empty message}">
+                 <div class="alert alert-${message.type }">
+                    <a class="close" data-dismiss="alert" href="#">×</a>
+                     ${message.text }
+                </div>
+            </c:if>
 			<!-- 面包屑 -->
 			<ul class="breadcrumb">
 			  <li>
@@ -36,6 +39,7 @@
 	              <span>列表</span>
 	            </a>
 	          </li>
+	          <se:authorize ifAnyGranted="A_SECURITY_RESOURCE_EDIT">
 	          <li id="createId" title="新增"  class="icon new_collection_link active">
 	            <a class="pjax" href="${ctx }/security/resource/create">
 	              <i class="icon-plus"></i>
@@ -48,53 +52,25 @@
 	              <span>编辑</span>
 	            </a>
 	          </li>
+	          </se:authorize>
 			</ul>
-
-			<!-- 搜索 
-			<form class="well form-search" accept-charset="UTF-8" action="/admin/plan" method="get">
-			  <input type="text" name="query" class="input-medium search-query" placeholder="筛选">
-			  <button type="submit" class="btn">搜索</button>
-			</form>-->
 			
-			<!-- <form class="form-horizontal">
-			  <div class="control-group error">
-			    <label class="control-label" for="inputEmail">Email</label>
-			    <div class="controls">
-			        <input type="text" id="inputEmail" placeholder="Email">
-			    	<span class="help-inline">Password can't be blank</span>
-			    	<p class="help-block">Required. Length of 6-128.</p>
-			    </div>
-			  </div>
-			  <div class="control-group">
-			    <label class="control-label" for="inputPassword">Password</label>
-			    <div class="controls">
-			      <input class="input-large" type="password" id="inputPassword" placeholder="Password">
-			    </div>
-			  </div>
-			  <div class="control-group">
-			    <div class="controls">
-			      <label class="checkbox">
-			        <input type="checkbox"> Remember me
-			      </label>
-			      <button type="submit" class="btn">Sign in</button>
-			    </div>
-			  </div>
-			</form> -->
-			
-
 			<form:form  class="form-horizontal" method="post" modelAttribute="resource">
 				<input type="hidden" name="_method" value="${_method}"></input>
 			  <div class="control-group">
 			    <label class="control-label" for="name">*名称</label>
 			    <div class="controls">
 			        <form:input path="name"  placeholder="name"/>
+			        <form:errors path="name" cssClass="formError"/>
 			    	<p class="help-block">必填.</p>
 			    </div>
 			  </div>
 			  <div class="control-group">
-			    <label class="control-label" for="value">链接</label>
+			    <label class="control-label" for="value">*链接</label>
 			    <div class="controls">
 			      <form:input path="value"  placeholder="value"/>
+			      <form:errors path="value" cssClass="formError"/>
+                  <p class="help-block">必填.</p>
 			    </div>
 			  </div>
 			  <div class="control-group">
