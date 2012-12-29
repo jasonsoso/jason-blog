@@ -10,7 +10,7 @@
 - 代码版本管理：Git
 
 ## 运行步骤： ##
-- 导入mysql脚本（https://github.com/jasonsoso/jason-blog/blob/master/src/main/resources/META-INF/sql/jason-blog-security.sql）
+- 导入mysql脚本（[https://github.com/jasonsoso/jason-blog/blob/master/src/main/resources/META-INF/sql/jason-blog-security.sql](https://github.com/jasonsoso/jason-blog/blob/master/src/main/resources/META-INF/sql/jason-blog-security.sql "blog sql")）
 
 - mvn compile 编译
 - mvn jetty:run 中间件jetty启动
