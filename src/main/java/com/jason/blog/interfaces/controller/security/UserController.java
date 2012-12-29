@@ -158,6 +158,7 @@ public class UserController extends ControllerSupport {
 		for (String item : items) {
 			delete(item);
 		}
+		success("删除用户成功！");
 		return REDIRECT_LIST;
 	}
 
@@ -168,6 +169,7 @@ public class UserController extends ControllerSupport {
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.DELETE)
 	public String delete(@PathVariable("id") String id) {
 		userInfoService.delete(id);
+		success("删除用户成功！");
 		return REDIRECT_LIST;
 	}
 	

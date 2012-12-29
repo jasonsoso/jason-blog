@@ -6,8 +6,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -15,8 +13,10 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 public class FlashModel {
 
-	static final String FLASH_MODEL_ATTRIBUTE = FlashModel.class.getName();
+	public static final String FLASH_MODEL_ATTRIBUTE = FlashModel.class.getName();
 
+	public static final String MESSAGE_KEY = "message";
+	
 	/**
 	 * 
 	 * @param request
@@ -83,7 +83,6 @@ public class FlashModel {
 		put(MESSAGE_KEY, new Message(MessageType.success, success));
 	}
 
-	private static final String MESSAGE_KEY = "message";
 
 	/**
 	 * Message object

@@ -71,12 +71,14 @@
 			    <label class="control-label" for="password">*密码</label>
 			    <div class="controls">
 			        <form:password path="password"  placeholder="password"/>
+			        <form:errors path="password" cssClass="formError"/>
+                    <p class="help-block">必填.密码最少6个字符串！</p>
 			    </div>
 			  </div>
 			  <div class="control-group">
 			    <label class="control-label" for="confirmPassword">*密码确认</label>
 			    <div class="controls">
-			        <input id="confirmPassword" name="confirmPassword" type="password" value="${userInfo.password}" class="input5 fontMar"/>
+			        <input id="confirmPassword" name="confirmPassword" type="password" placeholder="confirmPassword" value="${userInfo.password}" class="input5 fontMar"/>
 			    </div>
 			  </div>
 			  <div class="control-group">

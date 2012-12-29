@@ -41,7 +41,7 @@ public abstract class ControllerSupport extends MultiActionController {
 	 * @param model
 	 */
 	public final void error(Model model,String error) {
-		model.addAttribute(FlashModel.FLASH_MODEL_ATTRIBUTE,new Message(MessageType.error, error));
+		model.addAttribute(FlashModel.MESSAGE_KEY,new Message(MessageType.error, error));
 	}
 
 	/**

@@ -14,7 +14,7 @@
     <property name="username" unique="true" not-null="true" type="java.lang.String"></property>
     <property name="truename" not-null="false" type="java.lang.String"></property>
     <property name="password" not-null="true" type="java.lang.String"></property>
-    <property name="email" not-null="false" type="java.lang.String"></property>
+    <property name="email" not-null="true" type="java.lang.String"></property>
     <property name="phone" not-null="false" type="java.lang.String"></property>
     <property name="accountNonExpired" not-null="true" type="java.lang.Boolean"></property>
     <property name="accountNonLocked" not-null="true" type="java.lang.Boolean"></property>

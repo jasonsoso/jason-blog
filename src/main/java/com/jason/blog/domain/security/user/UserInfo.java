@@ -25,10 +25,32 @@ import com.jason.blog.infrastruture.util.ConvertUtils;
 public class UserInfo extends AbstractDomainObject{
 	private static final long serialVersionUID = 1L;
 
+	@NotNull(message="用户名不能为空！") 
+	@Size(min = 6, max = 20,message="用户名长度必须在6~20之间！")
+	private String username;
+	
+	private String truename;
+	
+	@NotNull(message="密码不能为空！")
+	@Size(min = 6, message="密码最少6个字符串！")
+	private String password;
+
+	@NotNull(message="邮箱不能为空！") 
+	@Pattern(regexp = "[0-9a-z\\-\\_A-Z]+@[0-9a-z\\-\\_A-Z]+\\.[a-z]{2,}",message="Email格式不正确！")
+	private String email;
+	
+	private String phone;
+	
+	private boolean accountNonExpired = true;
+	private boolean accountNonLocked = true;
+	private boolean credentialsNonExpired = true;
+	private boolean enabled = true;
+
 	private Set<Role> roles = new HashSet<Role>();
 
 	private Map<String, String> roleMap = new HashMap<String, String>();
-
+	
+	
 	@JsonIgnore
 	public Set<Role> getRoles() {
 		if (null == roles) {
@@ -72,37 +94,19 @@ public class UserInfo extends AbstractDomainObject{
 
 	public Set<String> getAuthorityNames() {
 		Set<String> authorityNames = new LinkedHashSet<String>();
-
 		for (Role role : getRoles()) {
 			for (Authority authority : role.getAuthorities()) {
 				authorityNames.add(authority.getName());
 			}
 		}
-
 		return authorityNames;
 	}
 
 	public UserInfo encodePassword(PasswordEncoder encoder) {
 		return setPassword(encoder.encodePassword(getPassword(), getUsername()));
 	}
-	@NotNull(message="用户名不能为空！") 
-	@Size(min = 6, max = 20,message="用户名长度必须在6~20之间！")
-	private String username;
 	
-	private String truename;
 	
-	private String password;
-
-	@Pattern(regexp = "[0-9a-z\\-\\_A-Z]+@[0-9a-z\\-\\_A-Z]+\\.[a-z]{2,}",message="Email格式不正确！")
-	private String email;
-	
-	private String phone;
-	
-	private boolean accountNonExpired = true;
-	private boolean accountNonLocked = true;
-	private boolean credentialsNonExpired = true;
-	private boolean enabled = true;
-
 	public String getUsername() {
 		return username;
 	}
