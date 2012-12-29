@@ -15,6 +15,11 @@ import org.springframework.security.web.util.AntUrlPathMatcher;
 import org.springframework.security.web.util.UrlMatcher;
 
 
+/**
+ * URL 拦截
+ * @author Jason
+ *
+ */
 public class URLSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 	
 	private final static UrlMatcher URL_MATCHER = new AntUrlPathMatcher();

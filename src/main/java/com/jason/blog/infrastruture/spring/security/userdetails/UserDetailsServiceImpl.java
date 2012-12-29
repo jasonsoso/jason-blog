@@ -18,7 +18,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jason.blog.domain.security.user.UserInfo;
 import com.jason.blog.domain.security.user.UserInfoRepository;
 
-
+/**
+ * 具体用户登录查询
+ * @author Jason
+ *
+ */
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
@@ -31,7 +35,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	 */
 	@Transactional(readOnly=true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DataAccessException {
-		
+		//可修改为 账号 或者 邮箱 均可以登录
 		UserInfo userInfo = userInfoRepository.queryByName(username);
 		if (null == userInfo) {
 			throw new UsernameNotFoundException("Invalid username");

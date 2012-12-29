@@ -35,7 +35,7 @@
 			</security:password-encoder>
 		</security:authentication-provider>
 	</security:authentication-manager>
-	
+	<!-- 用户具体登录 -->
 	<bean id="userDetailsService" class="com.jason.blog.infrastruture.spring.security.userdetails.UserDetailsServiceImpl" />
 	
 	<!-- 必须一致通过  -->

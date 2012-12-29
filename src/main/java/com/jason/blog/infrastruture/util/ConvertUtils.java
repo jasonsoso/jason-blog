@@ -31,7 +31,6 @@ public class ConvertUtils {
 		Assert.notNull(target, "target must not null");
 
 		try {
-
 			for (T bean : beans) {
 				PK pk = (PK) BeanUtils.getProperty(bean, keyPropertyName);
 				PV pv = (PV) BeanUtils.getProperty(bean, valuePropertyName);
@@ -41,7 +40,6 @@ public class ConvertUtils {
 		} catch (Exception e) {
 			throw ExceptionUtils.toUnchecked(e);
 		}
-
 	}
 
 	/**

@@ -6,6 +6,11 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 
+/**
+ * Spring Bean Holder
+ * @author Jason
+ *
+ */
 @Component
 public class SpringBeanHolder implements ApplicationContextAware {
 	private static ApplicationContext applicationContext;

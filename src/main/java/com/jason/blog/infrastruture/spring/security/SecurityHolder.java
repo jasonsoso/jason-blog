@@ -9,7 +9,7 @@ import com.jason.blog.infrastruture.spring.security.userdetails.UserDetailsServi
 public class SecurityHolder {
 	/**
 	 * 
-	 * @return
+	 * @return userName
 	 */
 	public static String getCurrentUserName() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -20,7 +20,7 @@ public class SecurityHolder {
 
 	/**
 	 * 
-	 * @return
+	 * @return UserInfo
 	 */
 	public static UserInfo getCurrentUser() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

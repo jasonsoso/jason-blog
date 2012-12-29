@@ -56,7 +56,7 @@ public class JCaptchaFilter implements Filter {
 	public static final String DEFAULT_CAPTCHA_PARAMTER_NAME = "j_captcha";
 
 	private static Logger logger = LoggerFactory.getLogger(JCaptchaFilter.class);
-
+	//错误页面url
 	private String failureUrl;
 	private String filterProcessesUrl = DEFAULT_FILTER_PROCESSES_URL;
 	private String captchaServiceId = DEFAULT_CAPTCHA_SERVICE_ID;
