@@ -22,7 +22,7 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.jason.blog">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
