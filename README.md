@@ -5,7 +5,7 @@
 ## 项目框架： ##
 
 - 主要框架：SpringMVC + Spring + SpringSecurity + Hibernate + Freemark
-- 数据库：mysql
+- 数据库：Mysql
 - 项目管理：Maven
 - 代码版本管理：Git
 
