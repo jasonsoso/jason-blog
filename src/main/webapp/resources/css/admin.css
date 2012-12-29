@@ -12,4 +12,8 @@ label {
 .formError {
   color: #b94a48;
 }
+.alert-warning {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
 
