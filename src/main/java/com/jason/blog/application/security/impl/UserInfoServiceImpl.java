@@ -16,8 +16,6 @@ import com.jason.blog.infrastruture.persist.hibernate.query.Page;
 @Transactional
 public class UserInfoServiceImpl implements UserInfoService {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(UserInfoServiceImpl.class);
-
 	private UserInfoRepository userInfoRepository;
 
 	@Autowired

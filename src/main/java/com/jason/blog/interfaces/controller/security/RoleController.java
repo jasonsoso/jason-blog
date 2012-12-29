@@ -26,9 +26,14 @@ import com.jason.blog.interfaces.support.ControllerSupport;
 @RequestMapping(value = "/security/role")
 public class RoleController extends ControllerSupport {
 	private static final String REDIRECT_LIST = "redirect:/security/role/list";
+	
+	@Autowired
+	private RoleService roleService;
+	@Autowired
+	private AuthorityService authorityService;
 
 	/**
-	 * 
+	 * role list
 	 * @param page
 	 * @param model
 	 * @return
@@ -62,9 +67,11 @@ public class RoleController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String create(@Valid Role entity, BindingResult result, HttpServletRequest request) {
+	public String create(@Valid Role entity, BindingResult result, HttpServletRequest request,Model model) {
 		if (result.hasErrors()) {
-			return null;
+			model.addAttribute("authorityList", authorityService.query("from Authority"));
+			error(model, "创建角色失败，请核对数据!");
+			return "security/role/form";
 		}
 
 		HibernateHelper.mergeByIds(
@@ -73,6 +80,7 @@ public class RoleController extends ControllerSupport {
 									Authority.class
 								);
 		roleService.store(entity);
+		success("创建角色成功！");
 		return REDIRECT_LIST;
 	}
 
@@ -109,9 +117,9 @@ public class RoleController extends ControllerSupport {
 										Authority.class
 									);
 			roleService.store(entity);
-			
+			success("角色修改成功！");
 		} catch (Exception e) {
-			return null;
+			error("修改角色失败，请核实数据后重新提交！");
 		}
 
 		return REDIRECT_LIST;
@@ -128,6 +136,7 @@ public class RoleController extends ControllerSupport {
 		for (String item : items) {
 			delete(item);
 		}
+		success("删除角色成功！");
 		return REDIRECT_LIST;
 	}
 
@@ -139,11 +148,8 @@ public class RoleController extends ControllerSupport {
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.DELETE)
 	public String delete(@PathVariable("id") String id) {
 		roleService.delete(id);
+		success("删除角色成功！");
 		return REDIRECT_LIST;
 	}
 
-	@Autowired
-	private RoleService roleService;
-	@Autowired
-	private AuthorityService authorityService;
 }

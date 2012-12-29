@@ -122,12 +122,10 @@ public class UserController extends ControllerSupport {
 			String origUsername = entity.getUsername();
 			String origPassword = entity.getPassword();
 			bind(request, entity);
-
 			// prevent malicious request,if username has modify,throw exception
 			if (usernameHasModified(origUsername, entity.getUsername())) {
 				throw new UnsupportedOperationException("Cannot modify the username!");
 			}
-
 			HibernateHelper.mergeByIds(
 										entity.getRoles(),
 										entity.getRoleMap().values(),

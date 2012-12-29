@@ -15,9 +15,13 @@
       <div class="row-fluid">
         <%@include file="/WEB-INF/views/admin/left.jsp" %>
         <div class="span9">
-          	<!-- <div class="page-header">
-					<h3>资源管理</h3>
-			</div> -->
+            <c:if test="${not empty message}">
+                 <div class="alert alert-${message.type }">
+                    <a class="close" data-dismiss="alert" href="#">×</a>
+                     ${message.text }
+                </div>
+            </c:if>
+            
 			<!-- 面包屑 -->
 			<ul class="breadcrumb">
 			  <li>
@@ -58,6 +62,7 @@
 			    <label class="control-label" for="name">*角色</label>
 			    <div class="controls">
 			        <form:input path="name"  placeholder="name"/>
+			        <form:errors path="name" cssClass="formError"/>
 			    	<p class="help-block">必填.</p>
 			    </div>
 			  </div>
@@ -95,11 +100,9 @@
 			$('#role_list').addClass('active');
 			var _method = $('input[name="_method"]').val();
 			if(_method == 'put'){
-				//当 _method == 'put' 的时候 为edit编辑
 				$('#breadcrumb_active').text("编辑");
 				$('#createId').hide();
 			}else{
-				//否则为新增
 				$('#breadcrumb_active').text("新增");
 				$('#editId').hide();
 				

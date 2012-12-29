@@ -35,7 +35,13 @@ public interface RoleService {
 	 * @return
 	 */
 	List<Role> query(String queryString, Object... values);
-
+	/**
+	 * 
+	 * @param page
+	 * @param hql
+	 * @param values
+	 * @return
+	 */
 	Page<Role> queryPage(Page<Role> page, String hql, Map<String, Object> values);
 
 }

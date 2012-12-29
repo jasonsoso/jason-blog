@@ -14,9 +14,12 @@
       <div class="row-fluid">
         <%@include file="/WEB-INF/views/admin/left.jsp" %>
         <div class="span9">
-          	<!-- <div class="page-header">
-					<h3>资源管理</h3>
-			</div> -->
+            <c:if test="${not empty message}">
+                 <div class="alert alert-${message.type }">
+                    <a class="close" data-dismiss="alert" href="#">×</a>
+                     ${message.text }
+                </div>
+            </c:if>
 			<!-- 面包屑 -->
 			<ul class="breadcrumb">
 			  <li>

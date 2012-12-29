@@ -6,6 +6,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import com.jason.blog.domain.security.authority.Authority;
 import com.jason.blog.domain.security.user.UserInfo;
 import com.jason.blog.domain.shared.AbstractDomainObject;
@@ -15,8 +18,20 @@ import com.jason.blog.infrastruture.util.ConvertUtils;
 public class Role extends AbstractDomainObject  {
 	private static final long serialVersionUID = 1L;
 
+	@NotNull(message="角色名不能为空！") 
+	@Size(min = 1, message="角色名不能为空值！")
+	private String name;
+	
+	private String descr;
+	
+	
 	private Set<UserInfo> users = new HashSet<UserInfo>();
 
+	private Set<Authority> authorities = new HashSet<Authority>();
+	
+	private Map<String, String> authorityMap = new HashMap<String, String>();
+	
+	
 	public Set<UserInfo> getUsers() {
 		if (null == users) {
 			return Collections.emptySet();
@@ -29,8 +44,6 @@ public class Role extends AbstractDomainObject  {
 		return this;
 	}
 
-	private Set<Authority> authorities = new HashSet<Authority>();
-
 	public Set<Authority> getAuthorities() {
 		if (null == authorities) {
 			return Collections.emptySet();
@@ -42,9 +55,7 @@ public class Role extends AbstractDomainObject  {
 		this.authorities = authorities;
 		return this;
 	}
-
-	private Map<String, String> authorityMap = new HashMap<String, String>();
-
+	
 	public Map<String, String> getAuthorityMap() {
 		if (null == authorityMap) {
 			return Collections.emptyMap();
@@ -63,8 +74,6 @@ public class Role extends AbstractDomainObject  {
 		return setAuthorityMap(roleMap);
 	}
 
-	private String name;
-	private String descr;
 
 	public String getName() {
 		return name;

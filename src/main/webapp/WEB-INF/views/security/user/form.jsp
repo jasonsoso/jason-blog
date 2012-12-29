@@ -37,6 +37,7 @@
 	              <span>列表</span>
 	            </a>
 	          </li>
+	          <se:authorize ifAnyGranted="A_SECURITY_USER_EDIT">
 	          <li id="createId" title="新增"  class="icon new_collection_link active">
 	            <a class="pjax" href="${ctx }/security/user/create">
 	              <i class="icon-plus"></i>
@@ -49,6 +50,7 @@
 	              <span>编辑</span>
 	            </a>
 	          </li>
+	          </se:authorize>
 			</ul>
 
 			<form:form  class="form-horizontal" method="post" modelAttribute="userInfo">
