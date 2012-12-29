@@ -33,6 +33,7 @@
 		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
 	</filter>
 	
+	<!-- JCaptcha filter 验证码  -->
 	<filter>
 		<filter-name>jCaptchaFilter</filter-name>
 		<filter-class>com.jason.blog.infrastruture.spring.security.captcha.JCaptchaFilter</filter-class>
@@ -42,16 +43,19 @@
 		</init-param>
 	</filter>
 	
+	<!-- Security filter -->
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
 	
+	<!-- Http Method Filter  -->
 	<filter>
 		<filter-name>hiddenMethodFilter</filter-name>
 		<filter-class>com.jason.blog.interfaces.filter.HttpHiddenMethodFilter</filter-class>
 	</filter>
 	
+	<!--  Share data between two request Filter -->
 	<filter>
 		<filter-name>flashModelFilter</filter-name>
 		<filter-class>com.jason.blog.interfaces.support.FlashModelFilter</filter-class>
@@ -66,7 +70,6 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-	<!-- 验证码 -->
 	<filter-mapping>
 		<filter-name>jCaptchaFilter</filter-name>
 		<url-pattern>/jcaptcha</url-pattern>

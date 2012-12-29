@@ -1,7 +1,5 @@
 <%@ page contentType="text/html;charset=utf-8" %>
 <%@include file="/common/taglibs.jsp" %>
-
-
 <ul>
 <c:choose>
 	<c:when test="${page.pageNo == 1 }">
@@ -79,13 +77,6 @@
 	</c:otherwise>
 </c:choose>
 
-<!-- <li><a href="#">1</a></li>
-<li class="active"><a href="#">2</a></li>
-<li><a href="#">3</a></li>
-<li><a href="#">4</a></li>
-<li><a href="#">5</a></li>
-<li><a href="#">6</a></li> -->
-
 <c:choose>
 	<c:when test="${page.isHasNext}">
 		<li><a href="?pageNo=${page.nextPage}">下一页 &gt;</a></li>
@@ -105,4 +96,4 @@
 </c:choose>
 
 </ul>
-<!-- http://localhost:8080/crawl/security/resource/list?pageNo=2&pageSize=10&orderBy=&order= -->
+<!--xxx/list?pageNo=2&pageSize=10&orderBy=&order= -->
