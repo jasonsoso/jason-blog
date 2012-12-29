@@ -27,6 +27,12 @@ import com.jason.blog.interfaces.support.ControllerSupport;
 public class AuthorityController extends ControllerSupport {
 	private static final String REDIRECT_LIST = "redirect:/security/authority/list";
 
+	
+	@Autowired
+	private AuthorityService authorityService;
+	
+	@Autowired
+	private ResourceService resourceService;
 	/**
 	 * 
 	 * @param page
@@ -68,9 +74,11 @@ public class AuthorityController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String create(Authority entity, BindingResult result, HttpServletRequest request) {
+	public String create(Authority entity, BindingResult result, HttpServletRequest request,Model model) {
 		if (result.hasErrors()) {
-			return null;
+			model.addAttribute("resourceList", resourceService.query("from Resource"));
+			error(model, "创建权限失败，请核对数据!");
+			return "security/authority/form";
 		}
 
 		HibernateHelper.mergeByIds(
@@ -79,6 +87,7 @@ public class AuthorityController extends ControllerSupport {
 									Resource.class
 								);
 		authorityService.store(entity);
+		success("创建权限成功！");
 		return REDIRECT_LIST;
 	}
 
@@ -117,8 +126,9 @@ public class AuthorityController extends ControllerSupport {
 									);
 			
 			authorityService.store(entity);
+			success("权限修改成功！");
 		} catch (Exception e) {
-			return null;
+			error("修改权限失败，请核实数据后重新提交！");
 		}
 		return REDIRECT_LIST;
 	}
@@ -136,6 +146,7 @@ public class AuthorityController extends ControllerSupport {
 		for (String item : items) {
 			delete(item);
 		}
+		success("删除权限成功！");
 		return REDIRECT_LIST;
 	}
 
@@ -148,13 +159,8 @@ public class AuthorityController extends ControllerSupport {
 	public String delete(@PathVariable("id") String id) {
 		
 		authorityService.delete(id);
+		success("删除权限成功！");
 		return REDIRECT_LIST;
 	}
 
-	
-	@Autowired
-	private AuthorityService authorityService;
-	
-	@Autowired
-	private ResourceService resourceService;
 }

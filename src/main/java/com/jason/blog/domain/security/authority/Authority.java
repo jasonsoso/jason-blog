@@ -7,6 +7,9 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import com.jason.blog.domain.security.resource.Resource;
 import com.jason.blog.domain.shared.AbstractDomainObject;
 import com.jason.blog.infrastruture.util.ConvertUtils;
@@ -14,8 +17,19 @@ import com.jason.blog.infrastruture.util.ConvertUtils;
 
 public class Authority extends AbstractDomainObject {
 	private static final long serialVersionUID = 1L;
+	
+	@NotNull(message="权限名不能为空！")
+	@Size(min = 1,message="权限名不能为空！")
+	private String name;
+	
+	@NotNull(message="显示名称不能为空！")
+	@Size(min = 1,message="显示名称不能为空！")
+	private String displayName;
+	
 	private Set<Resource> resources = new HashSet<Resource>();
-
+	
+	private Map<String, String> resourceMap = new HashMap<String, String>();
+	
 	public Set<Resource> getResources() {
 		if (null == resources) {
 			return Collections.emptySet();
@@ -37,8 +51,6 @@ public class Authority extends AbstractDomainObject {
 		this.resources = resources;
 	}
 
-	private Map<String, String> resourceMap = new HashMap<String, String>();
-
 	public Map<String, String> getResourceMap() {
 		if (null == resourceMap) {
 			return Collections.emptyMap();
@@ -57,8 +69,7 @@ public class Authority extends AbstractDomainObject {
 		return setResourceMap(resourceMap);
 	}
 	
-	private String name;
-	private String displayName;
+
 
 	public String getName() {
 		return name;

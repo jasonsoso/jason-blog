@@ -6,6 +6,9 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+
+import junit.framework.Assert;
+
 import org.junit.Test;
 
 public class RoleTest {
@@ -24,7 +27,7 @@ public class RoleTest {
 			System.out.println(constraintViolation.getMessage());
 			System.out.println(constraintViolation.getPropertyPath());
 		}
-		
+		Assert.assertTrue(constraintViolations.size()>0);
 	}
 	
 }

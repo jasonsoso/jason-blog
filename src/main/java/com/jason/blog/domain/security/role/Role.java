@@ -6,8 +6,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.jason.blog.domain.security.authority.Authority;
 import com.jason.blog.domain.security.user.UserInfo;
@@ -18,8 +17,7 @@ import com.jason.blog.infrastruture.util.ConvertUtils;
 public class Role extends AbstractDomainObject  {
 	private static final long serialVersionUID = 1L;
 
-	@NotNull(message="角色名不能为空！") 
-	@Size(min = 1, message="角色名不能为空值！")
+	@NotEmpty(message="角色名不能为空！") 
 	private String name;
 	
 	private String descr;
