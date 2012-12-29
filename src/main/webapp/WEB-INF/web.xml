@@ -58,7 +58,7 @@
 	<!--  Share data between two request Filter -->
 	<filter>
 		<filter-name>flashModelFilter</filter-name>
-		<filter-class>com.jason.blog.interfaces.support.FlashModelFilter</filter-class>
+		<filter-class>com.jason.blog.interfaces.filter.FlashModelFilter</filter-class>
 	</filter>
 	
 	<filter-mapping>

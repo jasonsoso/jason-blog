@@ -5,11 +5,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import javax.validation.constraints.Digits;
-
 import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Range;
-
 import com.jason.blog.domain.security.authority.Authority;
 import com.jason.blog.domain.shared.AbstractDomainObject;
 

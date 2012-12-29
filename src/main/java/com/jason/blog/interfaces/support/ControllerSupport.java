@@ -13,8 +13,9 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
-import com.jason.blog.interfaces.support.FlashModel.Message;
-import com.jason.blog.interfaces.support.FlashModel.MessageType;
+import com.jason.blog.interfaces.filter.FlashModel;
+import com.jason.blog.interfaces.filter.FlashModel.Message;
+import com.jason.blog.interfaces.filter.FlashModel.MessageType;
 
 
 public abstract class ControllerSupport extends MultiActionController {
