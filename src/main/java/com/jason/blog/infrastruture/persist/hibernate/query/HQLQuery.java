@@ -11,27 +11,25 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * Assembly  HQL
+ * @author Jason
+ *
+ */
 public class HQLQuery {
-	/**
-	 * @author loudyn
-	 */
+
 	public enum AndOr {
 		AND("and"), OR("or");
-
 		private final String meta;
 
 		private AndOr(final String meta) {
 			this.meta = meta;
 		}
-
 		public String asMeta() {
 			return meta;
 		}
 	}
 
-	/**
-	 * @author loudyn.
-	 */
 	public enum MatchType {
 		EQ("="), NE("<>"), LIKE("like"), GT(">"), LT("<"), GE(">="), LE("<="), IN("in"), NI("not in");
 
@@ -40,20 +38,25 @@ public class HQLQuery {
 		private MatchType(final String meta) {
 			this.meta = meta;
 		}
-
 		public String asMeta() {
 			return meta;
 		}
 	}
-
+	/**
+	 * hql
+	 */
 	private final StringBuilder query = new StringBuilder();
+	/**
+	 * values
+	 */
 	private final Map<String, Object> values = new HashMap<String, Object>();
 
 	private int lengthOfTableName = 0;
 	private boolean insertedWhere = false;
 
 	/**
-	 * @return
+	 * hql
+	 * @return String 
 	 */
 	public String hql() {
 		if (!values.isEmpty() && !insertedWhere) {
@@ -64,13 +67,15 @@ public class HQLQuery {
 	}
 
 	/**
-	 * @return
+	 * values
+	 * @return Map<String, Object>
 	 */
 	public Map<String, Object> values() {
 		return unmodifiableMap(values);
 	}
 
 	/**
+	 * from xxx
 	 * @param table
 	 * @return
 	 */
@@ -80,11 +85,9 @@ public class HQLQuery {
 		if (fromTable.toLowerCase().indexOf("from") == -1) {
 			fromTable = format("from %s ", fromTable);
 		}
-
 		if (!fromTable.endsWith(" ")) {
 			fromTable = format("%s ", fromTable);
 		}
-
 		query.insert(0, fromTable);
 		lengthOfTableName = fromTable.length();
 		return this;
@@ -117,7 +120,6 @@ public class HQLQuery {
 			if (!values.isEmpty()) {
 				query.append(format("%s ", andOr.asMeta()));
 			}
-
 			if (type == MatchType.IN || type == MatchType.NI) {
 				query.append(format("%s %s (:%s) ", property, type.asMeta(), propertyKey));
 			}
@@ -140,11 +142,11 @@ public class HQLQuery {
 		if (values.containsKey(key)) {
 			key = format("%s_%s", key, randomstring(4));
 		}
-
 		return key;
 	}
 
 	/**
+	 * like '%xxx%'
 	 * @param matchType
 	 * @param value
 	 * @return
@@ -169,7 +171,6 @@ public class HQLQuery {
 	 */
 	private String randomstring(int length) {
 		Random random = new Random();
-
 		StringBuilder buf = new StringBuilder();
 
 		for (int i = 0; i < length; i++) {
@@ -181,9 +182,9 @@ public class HQLQuery {
 	}
 
 	/**
+	 * equal( = )
 	 * @param property
 	 * @param propertyValue
-	 * @param andOr
 	 * @return
 	 */
 	public HQLQuery eq(String property, Object propertyValue) {
@@ -191,6 +192,7 @@ public class HQLQuery {
 	}
 
 	/**
+	 * not equal ( <> )
 	 * @param property
 	 * @param propertyValue
 	 * @param andOr
@@ -201,9 +203,9 @@ public class HQLQuery {
 	}
 
 	/**
+	 * Greater than ( > )
 	 * @param property
 	 * @param propertyValue
-	 * @param andOr
 	 * @return
 	 */
 	public HQLQuery gt(String property, Object propertyValue) {
@@ -211,6 +213,7 @@ public class HQLQuery {
 	}
 
 	/**
+	 * Less than ( < )
 	 * @param property
 	 * @param propertyValue
 	 * @param andOr
@@ -221,6 +224,7 @@ public class HQLQuery {
 	}
 
 	/**
+	 * Greater equal ( >= )
 	 * @param property
 	 * @param propertyValue
 	 * @param andOr
@@ -231,6 +235,7 @@ public class HQLQuery {
 	}
 
 	/**
+	 * Less equal ( <= )
 	 * @param property
 	 * @param propertyValue
 	 * @param andOr
@@ -241,9 +246,9 @@ public class HQLQuery {
 	}
 
 	/**
+	 * like '%xxx%'
 	 * @param property
 	 * @param propertyValue
-	 * @param andOr
 	 * @return
 	 */
 	public HQLQuery like(String property, String propertyValue) {
@@ -251,6 +256,7 @@ public class HQLQuery {
 	}
 
 	/**
+	 * in (xxx)
 	 * @param property
 	 * @param propertyValue
 	 * @param andOr
@@ -261,6 +267,7 @@ public class HQLQuery {
 	}
 
 	/**
+	 * not in (xxx)
 	 * @param property
 	 * @param propertyValue
 	 * @param andOr
@@ -343,6 +350,7 @@ public class HQLQuery {
 	}
 
 	/**
+	 * order by xxx
 	 * @param orderBy
 	 * @return
 	 */
@@ -358,6 +366,7 @@ public class HQLQuery {
 	}
 
 	/**
+	 * group by xxx
 	 * @param groupBy
 	 * @return
 	 */
