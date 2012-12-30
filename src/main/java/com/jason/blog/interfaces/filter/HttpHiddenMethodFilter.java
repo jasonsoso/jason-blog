@@ -15,6 +15,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 /**
  * avoid using hidden method,we can call with ajax request but some browser,it didnot support put method
  * 
+ * eg:org.springframework.web.filter.HiddenHttpMethodFilter
  */
 public class HttpHiddenMethodFilter extends OncePerRequestFilter {
 

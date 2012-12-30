@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Spring Bean Holder
+ * 取得spring管理的bean
  * @author Jason
  *
  */

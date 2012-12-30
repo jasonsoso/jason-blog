@@ -24,7 +24,21 @@ import com.jason.blog.infrastruture.persist.hibernate.query.Page;
 import com.jason.blog.interfaces.support.ControllerSupport;
 
 
-
+/**
+ * 
+ * 用户管理的Controller, 使用Restful风格的Urls:
+ * 
+ * List   page        : GET  /user/list
+ * Create page        : GET  /user/create
+ * Create action      : POST /user/create
+ * Update page        : GET  /user/{id}/edit
+ * Update action      : PUT /user/{id}/edit
+ * Delete action      : DELETE /user/{id}/delete
+ * Delete many action : DELETE /user/delete
+ * 
+ * @author Jason
+ *
+ */
 @Controller
 @RequestMapping(value = "/security/user")
 public class UserController extends ControllerSupport {
@@ -91,7 +105,7 @@ public class UserController extends ControllerSupport {
 								);
 		entity.encodePassword(new Md5PasswordEncoder());
 		userInfoService.store(entity);
-		success("创建用户成功！");
+		success("创建用户成功！"); //提示：spring3.1起，RedirectAttributes提供redirectAttributes.addFlashAttribute("message", "创建任务成功");
 		return REDIRECT_LIST;
 	}
 

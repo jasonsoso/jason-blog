@@ -11,8 +11,8 @@ import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
-import org.springframework.security.web.util.AntUrlPathMatcher;
-import org.springframework.security.web.util.UrlMatcher;
+import org.springframework.util.AntPathMatcher;
+import org.springframework.util.PathMatcher;
 
 
 /**
@@ -22,7 +22,7 @@ import org.springframework.security.web.util.UrlMatcher;
  */
 public class URLSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 	
-	private final static UrlMatcher URL_MATCHER = new AntUrlPathMatcher();
+	private final static PathMatcher pathMatcher =  new AntPathMatcher();
 	
 	@Autowired
 	private ResourceMetadataService resourceMetadataService;
@@ -45,7 +45,8 @@ public class URLSecurityMetadataSource implements FilterInvocationSecurityMetada
 			
 			String urlPattern = it.next();
 			
-			if (URL_MATCHER.pathMatchesUrl(urlPattern, requestUrl)) {
+			//if (URL_MATCHER.pathMatchesUrl(urlPattern, requestUrl)) {
+			if (pathMatcher.match(urlPattern, requestUrl)) {
 				Collection<ConfigAttribute> configAttrs = new ArrayList<ConfigAttribute>();
 				
 				for (String metadata : metadatas.get(urlPattern)) {
