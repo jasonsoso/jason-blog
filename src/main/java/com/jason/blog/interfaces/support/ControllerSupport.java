@@ -27,13 +27,7 @@ public abstract class ControllerSupport extends MultiActionController {
 	 * @param success
 	 */
 	public final void success(RedirectAttributes redirectAttributes,String success) {
-		//redirectAttributes.addFlashAttribute(FlashModel.MESSAGE_KEY, new Message(MessageType.success, success));
-		try {
-			FlashModel.setSuccessMessage(redirectAttributes,success);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+		FlashModel.setSuccessMessage(redirectAttributes,success);
 	}
 
 
