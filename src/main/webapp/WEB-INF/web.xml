@@ -51,8 +51,8 @@
 	
 	<!-- Http Method Filter  -->
 	<filter>
-		<filter-name>hiddenMethodFilter</filter-name>
-		<filter-class>com.jason.blog.interfaces.filter.HttpHiddenMethodFilter</filter-class>
+		<filter-name>hiddenHttpMethodFilter</filter-name>
+		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
 	</filter>
 	
 	<!--  Share data between two request Filter -->
@@ -86,7 +86,7 @@
 	</filter-mapping>
 	
 	<filter-mapping>
-		<filter-name>hiddenMethodFilter</filter-name>
+		<filter-name>hiddenHttpMethodFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
