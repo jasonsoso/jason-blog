@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jason.blog.application.security.RoleService;
 import com.jason.blog.application.security.UserInfoService;
@@ -21,7 +22,9 @@ import com.jason.blog.domain.shared.EntityUtils;
 import com.jason.blog.infrastruture.persist.hibernate.HibernateHelper;
 import com.jason.blog.infrastruture.persist.hibernate.query.HQLQuery;
 import com.jason.blog.infrastruture.persist.hibernate.query.Page;
+
 import com.jason.blog.interfaces.support.ControllerSupport;
+
 
 
 /**
@@ -91,7 +94,7 @@ public class UserController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String create(@Valid UserInfo entity, BindingResult result, HttpServletRequest request,Model model) {
+	public String create(@Valid UserInfo entity, BindingResult result, HttpServletRequest request,Model model,RedirectAttributes redirectAttributes) {
 
 		if (result.hasErrors()) {
 			model.addAttribute("roleList", roleService.query("from Role"));
@@ -105,7 +108,8 @@ public class UserController extends ControllerSupport {
 								);
 		entity.encodePassword(new Md5PasswordEncoder());
 		userInfoService.store(entity);
-		success("创建用户成功！"); //提示：spring3.1起，RedirectAttributes提供redirectAttributes.addFlashAttribute("message", "创建任务成功");
+		
+		success(redirectAttributes,"创建用户成功！"); 
 		return REDIRECT_LIST;
 	}
 
@@ -129,7 +133,7 @@ public class UserController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.PUT)
-	public String edit(@PathVariable("id") String id, HttpServletRequest request) {
+	public String edit(@PathVariable("id") String id, HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		try {
 			UserInfo entity = userInfoService.get(id);
 
@@ -152,9 +156,9 @@ public class UserController extends ControllerSupport {
 				entity.setPassword(origPassword);
 			}
 			userInfoService.store(entity);
-			success("用户修改成功！");
+			success(redirectAttributes,"用户修改成功！");
 		} catch (Exception e) {
-			error("修改用户失败，请核实数据后重新提交！");
+			error(redirectAttributes,"修改用户失败，请核实数据后重新提交！");
 		}
 		return REDIRECT_LIST;
 	}
@@ -164,13 +168,13 @@ public class UserController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-	public String delete(HttpServletRequest request) {
+	public String delete(HttpServletRequest request,RedirectAttributes redirectAttributes) {
 
 		String[] items = EntityUtils.nullSafe(request.getParameterValues("items"), new String[] {});
 		for (String item : items) {
-			delete(item);
+			userInfoService.delete(item);
 		}
-		success("删除用户成功！");
+		success(redirectAttributes,"删除用户成功！");
 		return REDIRECT_LIST;
 	}
 
@@ -179,9 +183,9 @@ public class UserController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.DELETE)
-	public String delete(@PathVariable("id") String id) {
+	public String delete(@PathVariable("id") String id,RedirectAttributes redirectAttributes) {
 		userInfoService.delete(id);
-		success("删除用户成功！");
+		success(redirectAttributes,"删除用户成功！");
 		return REDIRECT_LIST;
 	}
 	

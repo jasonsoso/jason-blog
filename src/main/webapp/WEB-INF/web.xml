@@ -55,12 +55,6 @@
 		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
 	</filter>
 	
-	<!--  Share data between two request Filter -->
-	<filter>
-		<filter-name>flashModelFilter</filter-name>
-		<filter-class>com.jason.blog.interfaces.filter.FlashModelFilter</filter-class>
-	</filter>
-	
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
@@ -90,10 +84,6 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-	<filter-mapping>
-		<filter-name>flashModelFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
 
 	<!-- Processes application requests -->
 	<servlet>

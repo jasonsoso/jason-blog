@@ -1,97 +1,67 @@
 package com.jason.blog.interfaces.filter;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.web.context.request.RequestAttributes;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
+/**
+ * Redirect Info
+ * Share data between two request
+ * Mainly provide prompt information
+ * @author Jason
+ *
+ */
 public class FlashModel {
 
-	public static final String FLASH_MODEL_ATTRIBUTE = FlashModel.class.getName();
-
 	public static final String MESSAGE_KEY = "message";
-	
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public static Map<String, Object> getCurrent(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		Map<String, Object> flash = (Map<String, Object>) session.getAttribute(FLASH_MODEL_ATTRIBUTE);
-		if (flash == null) {
-			flash = new HashMap<String, Object>();
-			session.setAttribute(FLASH_MODEL_ATTRIBUTE, flash);
-		}
-		return flash;
-	}
 
 	/**
-	 * 
 	 * @param key
 	 * @param value
 	 */
-	public static void put(String key, Object value) {
-		getCurrent(getRequest(RequestContextHolder.currentRequestAttributes())).put(key, value);
-	}
-
-	/**
-	 * 
-	 * @param requestAttributes
-	 * @return
-	 */
-	private static HttpServletRequest getRequest(RequestAttributes requestAttributes) {
-		return ((ServletRequestAttributes) requestAttributes).getRequest();
+	public static void putFlashAttribute(RedirectAttributes redirectAttributes,Message message) {
+		redirectAttributes.addFlashAttribute(MESSAGE_KEY, message);
 	}
 
 	/**
 	 * 
 	 * @param info
 	 */
-	public static void setInfoMessage(String info) {
-		put(MESSAGE_KEY, new Message(MessageType.info, info));
+	public static void setInfoMessage(RedirectAttributes redirectAttributes,String info) {
+		putFlashAttribute(redirectAttributes, new Message(MessageType.info, info));
 	}
 
 	/**
 	 * 
 	 * @param warning
 	 */
-	public static void setWarningMessage(String warning) {
-		put(MESSAGE_KEY, new Message(MessageType.warning, warning));
+	public static void setWarningMessage(RedirectAttributes redirectAttributes,String warning) {
+		putFlashAttribute(redirectAttributes, new Message(MessageType.warning, warning));
 	}
 
 	/**
 	 * 
 	 * @param error
 	 */
-	public static void setErrorMessage(String error) {
-		put(MESSAGE_KEY, new Message(MessageType.error, error));
+	public static void setErrorMessage(RedirectAttributes redirectAttributes,String error) {
+		putFlashAttribute(redirectAttributes, new Message(MessageType.error, error));
 	}
 
 	/**
 	 * 
 	 * @param success
 	 */
-	public static void setSuccessMessage(String success) {
-		put(MESSAGE_KEY, new Message(MessageType.success, success));
+	public static void setSuccessMessage(RedirectAttributes redirectAttributes,String success) {
+		putFlashAttribute(redirectAttributes, new Message(MessageType.success, success));
 	}
 
 
 	/**
-	 * Message object
+	 * Message message
 	 * @author Jason
 	 */
 	public static final class Message {
 
 		private final MessageType type;
-
 		private final String text;
 
 		public Message(MessageType type, String text) {

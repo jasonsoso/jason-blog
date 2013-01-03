@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jason.blog.application.security.AuthorityService;
 import com.jason.blog.application.security.RoleService;
@@ -67,7 +68,7 @@ public class RoleController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String create(@Valid Role entity, BindingResult result, HttpServletRequest request,Model model) {
+	public String create(@Valid Role entity, BindingResult result, HttpServletRequest request,Model model,RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()) {
 			model.addAttribute("authorityList", authorityService.query("from Authority"));
 			error(model, "创建角色失败，请核对数据!");
@@ -80,7 +81,7 @@ public class RoleController extends ControllerSupport {
 									Authority.class
 								);
 		roleService.store(entity);
-		success("创建角色成功！");
+		success(redirectAttributes,"创建角色成功！");
 		return REDIRECT_LIST;
 	}
 
@@ -106,7 +107,7 @@ public class RoleController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.PUT)
-	public String edit(@PathVariable("id") String id, HttpServletRequest request) {
+	public String edit(@PathVariable("id") String id, HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		try {
 			Role entity = roleService.get(id);
 			bind(request, entity);
@@ -117,9 +118,9 @@ public class RoleController extends ControllerSupport {
 										Authority.class
 									);
 			roleService.store(entity);
-			success("角色修改成功！");
+			success(redirectAttributes,"角色修改成功！");
 		} catch (Exception e) {
-			error("修改角色失败，请核实数据后重新提交！");
+			error(redirectAttributes,"修改角色失败，请核实数据后重新提交！");
 		}
 
 		return REDIRECT_LIST;
@@ -131,12 +132,12 @@ public class RoleController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-	public String delete(HttpServletRequest request) {
+	public String delete(HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		String[] items = EntityUtils.nullSafe(request.getParameterValues("items"), new String[] {});
 		for (String item : items) {
-			delete(item);
+			roleService.delete(item);
 		}
-		success("删除角色成功！");
+		success(redirectAttributes,"删除角色成功！");
 		return REDIRECT_LIST;
 	}
 
@@ -146,9 +147,9 @@ public class RoleController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.DELETE)
-	public String delete(@PathVariable("id") String id) {
+	public String delete(@PathVariable("id") String id,RedirectAttributes redirectAttributes) {
 		roleService.delete(id);
-		success("删除角色成功！");
+		success(redirectAttributes,"删除角色成功！");
 		return REDIRECT_LIST;
 	}
 

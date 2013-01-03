@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jason.blog.application.security.ResourceService;
 import com.jason.blog.domain.security.resource.Resource;
@@ -62,13 +63,13 @@ public class ResourceController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String create(@Valid Resource entity, BindingResult result,Model model) {
+	public String create(@Valid Resource entity, BindingResult result,Model model,RedirectAttributes redirectAttributes) {
 
 		if (result.hasErrors()) {
 			error(model, "创建资源失败，请核对数据!");
 			return "security/resource/form";
 		}
-		success("创建资源成功！");
+		success(redirectAttributes,"创建资源成功！");
 		resourceService.store(entity);
 		return REDIRECT_LIST;
 	}
@@ -91,15 +92,15 @@ public class ResourceController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.PUT)
-	public String edit(@PathVariable("id") String id, HttpServletRequest request) {
+	public String edit(@PathVariable("id") String id, HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		try {
 
 			Resource entity = resourceService.get(id);
 			bind(request, entity);
 			resourceService.store(entity);
-			success("资源修改成功！");
+			success(redirectAttributes,"资源修改成功！");
 		} catch (Exception e) {
-			error("修改资源失败，请核实数据后重新提交！");
+			error(redirectAttributes,"修改资源失败，请核实数据后重新提交！");
 		}
 
 		return REDIRECT_LIST;
@@ -110,14 +111,14 @@ public class ResourceController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-	public String delete(HttpServletRequest request) {
+	public String delete(HttpServletRequest request,RedirectAttributes redirectAttributes) {
 
 		String[] items = EntityUtils.nullSafe(request.getParameterValues("items"), new String[] {});
 
 		for (String item : items) {
-			delete(item);
+			resourceService.delete(item);
 		}
-		success("删除资源成功！");
+		success(redirectAttributes,"删除资源成功！");
 		return REDIRECT_LIST;
 	}
 
@@ -126,10 +127,10 @@ public class ResourceController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.DELETE)
-	public String delete(@PathVariable("id") String id) {
+	public String delete(@PathVariable("id") String id,RedirectAttributes redirectAttributes) {
 
 		resourceService.delete(id);
-		success("删除资源成功！");
+		success(redirectAttributes,"删除资源成功！");
 		return REDIRECT_LIST;
 	}
 

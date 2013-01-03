@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jason.blog.interfaces.filter.FlashModel;
 import com.jason.blog.interfaces.filter.FlashModel.Message;
@@ -25,16 +26,23 @@ public abstract class ControllerSupport extends MultiActionController {
 	 * Redirect Success
 	 * @param success
 	 */
-	public final void success(String success) {
-		FlashModel.setSuccessMessage(success);
+	public final void success(RedirectAttributes redirectAttributes,String success) {
+		//redirectAttributes.addFlashAttribute(FlashModel.MESSAGE_KEY, new Message(MessageType.success, success));
+		try {
+			FlashModel.setSuccessMessage(redirectAttributes,success);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
+
 
 	/**
 	 * Redirect Error
 	 * @param error
 	 */
-	public final void error(String error) {
-		FlashModel.setErrorMessage(error);
+	public final void error(RedirectAttributes redirectAttributes,String error) {
+		FlashModel.setErrorMessage(redirectAttributes,error);
 	}
 	/**
 	 * Forward Error
@@ -49,16 +57,16 @@ public abstract class ControllerSupport extends MultiActionController {
 	 * Redirect Warning
 	 * @param warning
 	 */
-	public final void warning(String warning) {
-		FlashModel.setWarningMessage(warning);
+	public final void warning(RedirectAttributes redirectAttributes,String warning) {
+		FlashModel.setErrorMessage(redirectAttributes,warning);
 	}
 
 	/**
 	 * Redirect Info
 	 * @param info
 	 */
-	public final void info(String info) {
-		FlashModel.setInfoMessage(info);
+	public final void info(RedirectAttributes redirectAttributes,String info) {
+		FlashModel.setErrorMessage(redirectAttributes,info);
 	}
 
 	/**

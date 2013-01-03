@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jason.blog.application.security.AuthorityService;
 import com.jason.blog.application.security.ResourceService;
@@ -75,7 +76,7 @@ public class AuthorityController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String create(@Valid Authority entity, BindingResult result, HttpServletRequest request,Model model) {
+	public String create(@Valid Authority entity, BindingResult result, HttpServletRequest request,Model model,RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()) {
 			model.addAttribute("resourceList", resourceService.query("from Resource"));
 			error(model, "创建权限失败，请核对数据!");
@@ -88,7 +89,7 @@ public class AuthorityController extends ControllerSupport {
 									Resource.class
 								);
 		authorityService.store(entity);
-		success("创建权限成功！");
+		success(redirectAttributes,"创建权限成功！");
 		return REDIRECT_LIST;
 	}
 
@@ -115,7 +116,7 @@ public class AuthorityController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.PUT)
-	public String edit(@PathVariable("id") String id, HttpServletRequest request) {
+	public String edit(@PathVariable("id") String id, HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		try {
 			Authority entity = authorityService.get(id);
 			bind(request, entity);
@@ -127,9 +128,9 @@ public class AuthorityController extends ControllerSupport {
 									);
 			
 			authorityService.store(entity);
-			success("权限修改成功！");
+			success(redirectAttributes,"权限修改成功！");
 		} catch (Exception e) {
-			error("修改权限失败，请核实数据后重新提交！");
+			error(redirectAttributes,"修改权限失败，请核实数据后重新提交！");
 		}
 		return REDIRECT_LIST;
 	}
@@ -140,14 +141,14 @@ public class AuthorityController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-	public String delete(HttpServletRequest request) {
+	public String delete(HttpServletRequest request,RedirectAttributes redirectAttributes) {
 
 		String[] items = EntityUtils.nullSafe(request.getParameterValues("items"), new String[] {});
 
 		for (String item : items) {
-			delete(item);
+			authorityService.delete(item);
 		}
-		success("删除权限成功！");
+		success(redirectAttributes,"删除权限成功！");
 		return REDIRECT_LIST;
 	}
 
@@ -157,10 +158,10 @@ public class AuthorityController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.DELETE)
-	public String delete(@PathVariable("id") String id) {
+	public String delete(@PathVariable("id") String id,RedirectAttributes redirectAttributes) {
 		
 		authorityService.delete(id);
-		success("删除权限成功！");
+		success(redirectAttributes,"删除权限成功！");
 		return REDIRECT_LIST;
 	}
 
