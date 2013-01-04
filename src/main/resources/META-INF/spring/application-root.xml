@@ -74,10 +74,10 @@
     </bean>   
 
 	<!-- 事务管理器配置,单数据源事务 -->
-	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<tx:annotation-driven transaction-manager="txManager" proxy-target-class="true"/>
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 	<aop:aspectj-autoproxy />
 	
 	<!-- Service -->
@@ -86,6 +86,8 @@
 	<bean id="authorityService" class="com.jason.blog.application.security.impl.AuthorityServiceImpl"/>
 	<bean id="resourceService" class="com.jason.blog.application.security.impl.ResourceServiceImpl"/>
 
+	<bean id="articleService" class="com.jason.blog.application.article.impl.ArticleServiceImpl"/>
+	
 	
 	<bean id="ayncTaskAssigner" class="com.jason.blog.domain.task.async.AsyncTaskAssigner" lazy-init="false" scope="singleton">
 		<property name="poolSize" value="10" />

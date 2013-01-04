@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-access="field">
+  <class name="com.jason.blog.domain.article.Article" table="article" lazy="false">
+	<cache usage="read-write" region="org.hibernate.cache.StandardQueryCache"/>
+    <id name="id" column="id">
+      <generator class="native"/>
+    </id>
+    
+    <property name="title" not-null="true" type="java.lang.String"></property>
+    <property name="content" not-null="true" type="java.lang.String"></property>
+    <property name="viewCount" not-null="false" type="java.lang.Long"></property>
+    <property name="commentCount" not-null="false" type="java.lang.Long"></property>
+    <property name="priority" not-null="false" type="java.lang.Integer"></property>
+    <property name="onTop" not-null="true" type="java.lang.Boolean"></property>
+    <property name="status" not-null="false" type="java.lang.Integer"></property>
+    <property name="createdAt" not-null="true" type="java.util.Date"></property>
+    <property name="updatedAt" not-null="true" type="java.util.Date"></property>
+  </class>
+</hibernate-mapping>

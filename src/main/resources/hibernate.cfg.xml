@@ -11,6 +11,8 @@
     <mapping resource="META-INF/hibernate/security/Role.hbm.xml" />
     <mapping resource="META-INF/hibernate/security/Resource.hbm.xml" />
     <mapping resource="META-INF/hibernate/security/User.hbm.xml" />
+    
+    <mapping resource="META-INF/hibernate/Article.hbm.xml" />
 
   </session-factory>
 

@@ -39,6 +39,6 @@ public class LogTest {
         logger.warn("我警告你！");
         
         //ERROR 为严重错误 主要是程序的错误
-        logger.error("空指針錯誤", new NullPointerException());
+        //logger.error("空指針錯誤", new NullPointerException());
 	}
 }
