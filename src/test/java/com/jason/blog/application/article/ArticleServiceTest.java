@@ -33,5 +33,6 @@ public class ArticleServiceTest extends AbstractTestBase {
 		entity.setUpdatedAt(new Date());
 		
 		articleService.store(entity);
+		System.out.println("testStore id is :"+entity.getId());
 	}
 }
