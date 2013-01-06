@@ -20,7 +20,7 @@
 				  		<se:authorize ifAnyGranted="A_SECURITY_RESOURCE_LIST">
 				          <li id="resource_list"><a href="${ctx }/security/resource/list"><i class="icon-list"></i>资源管理</a></li>
 				  		</se:authorize>
-				        
+				        <li id="article_list"><a href="${ctx }/article/list"><i class="icon-list"></i>文章管理</a></li>
 				</se:authorize>
 				
               <!-- <li class="nav-header">导航父类</li>
