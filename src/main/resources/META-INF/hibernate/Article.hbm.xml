@@ -5,7 +5,7 @@
   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping default-access="field">
-  <class name="com.jason.blog.domain.article.Article" table="article" lazy="false">
+  <class name="com.jason.blog.domain.article.Article" table="blog_article" lazy="false">
 	<cache usage="read-write" region="org.hibernate.cache.StandardQueryCache"/>
     <id name="id" column="id">
       <generator class="native"/>
@@ -20,5 +20,9 @@
     <property name="status" not-null="false" type="java.lang.Integer"></property>
     <property name="createdAt" not-null="true" type="java.util.Date"></property>
     <property name="updatedAt" not-null="true" type="java.util.Date"></property>
+    
+    <many-to-one name="userInfo" class="com.jason.blog.domain.security.user.UserInfo" column="user_id">
+    </many-to-one>
+    
   </class>
 </hibernate-mapping>

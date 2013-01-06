@@ -66,6 +66,7 @@
 							<th class="sortable"><a href="#">状态</a></th>
 							<th class="sortable"><a href="#">创建时间</a></th>
 							<th class="sortable"><a href="#">最近更新时间</a></th>
+							<th class="sortable"><a href="#">作者</a></th>
 							<th class="header">操作</th>
 						</tr>
 					</thead>
@@ -90,8 +91,12 @@
 											<td>
 											     <fmt:formatDate value="${article.createdAt}" pattern="yyyy-MM-dd hh:mm"/>
 											 &nbsp;</td>
-											<td>${article.updatedAt}&nbsp;</td>
-
+											<td>
+											     <fmt:formatDate value="${article.updatedAt}" pattern="yyyy-MM-dd hh:mm"/>
+											&nbsp;</td>
+                                            <td>
+                                                ${article.userInfo.username}
+                                            &nbsp;</td>
 											<td  class="link">
 													<a class="btn btn-small" href="${ctx }/article/${article.id}/edit"><i class="icon-pencil"></i> 编辑</a>
 													<a class="btn btn-small" href="javascript:;"  onclick="deleteRow('${article.id}')" ><i class="icon-remove"></i> 删除</a>
@@ -101,7 +106,7 @@
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
-									<tr class=""><td colspan="4" align="center"><b>暂无内容</b></td></tr>
+									<tr class=""><td colspan="7" align="center"><b>暂无内容</b></td></tr>
 								</c:otherwise>
 							</c:choose>
 					

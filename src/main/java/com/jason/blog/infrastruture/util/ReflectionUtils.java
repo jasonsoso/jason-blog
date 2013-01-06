@@ -169,8 +169,8 @@ public abstract class ReflectionUtils {
 	 * @return the first generic declaration, or Object.class if cannot be determined
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T> Class<T> getSuperClassGenricType(final Class clazz) {
-		return getSuperClassGenricType(clazz, 0);
+	public static <T> Class<T> getSuperClassGenricType(final Class<T> clazz) {
+		return (Class<T>) getSuperClassGenricType(clazz, 0);
 	}
 
 	/**
@@ -183,7 +183,7 @@ public abstract class ReflectionUtils {
 	 * @param index the Index of the generic ddeclaration,start from 0.
 	 * @return the index generic declaration, or Object.class if cannot be determined
 	 */
-	public static Class getSuperClassGenricType(final Class clazz, final int index) {
+	public static Class<?> getSuperClassGenricType(final Class<?> clazz, final int index) {
 
 		Type genType = clazz.getGenericSuperclass();
 
@@ -204,7 +204,7 @@ public abstract class ReflectionUtils {
 			return Object.class;
 		}
 
-		return (Class) params[index];
+		return (Class<?>) params[index];
 	}
 
 	/**

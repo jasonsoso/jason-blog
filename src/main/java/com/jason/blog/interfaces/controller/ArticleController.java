@@ -19,6 +19,7 @@ import com.jason.blog.domain.article.Article;
 import com.jason.blog.domain.shared.EntityUtils;
 import com.jason.blog.infrastruture.persist.hibernate.query.HQLQuery;
 import com.jason.blog.infrastruture.persist.hibernate.query.Page;
+import com.jason.blog.infrastruture.spring.security.SecurityHolder;
 import com.jason.blog.interfaces.support.ControllerSupport;
 
 
@@ -90,6 +91,8 @@ public class ArticleController extends ControllerSupport {
 		Date now = new Date();
 		entity.setCreatedAt(now);
 		entity.setUpdatedAt(now);
+		entity.setUserInfo(SecurityHolder.getCurrentUser());
+		
 		articleService.store(entity);
 		
 		success(redirectAttributes,"创建文章成功！"); 
@@ -155,17 +158,14 @@ public class ArticleController extends ControllerSupport {
 		return REDIRECT_LIST;
 	}
 	/**
-	 * 
 	 * @param id
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String show(@PathVariable("id") long id, Model model) {
-
 		model.addAttribute(articleService.get(id));
 		return "article/form";
 	}
-	
 	
 }

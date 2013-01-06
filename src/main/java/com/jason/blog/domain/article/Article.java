@@ -2,6 +2,8 @@ package com.jason.blog.domain.article;
 
 import java.util.Date;
 import javax.validation.constraints.Size;
+
+import com.jason.blog.domain.security.user.UserInfo;
 import com.jason.blog.domain.shared.IdDomainObject;
 
 public class Article extends IdDomainObject{
@@ -9,10 +11,10 @@ public class Article extends IdDomainObject{
 	private static final long serialVersionUID = 1L;
 
 	
-	@Size(min = 8, max = 128)
+	@Size(min = 6, max = 128)
 	private String title;
 	
-	@Size(min = 8, max = 8192)
+	@Size(min = 6, max = 8192)
 	private String content;
 	
 	private long viewCount;//瀏覽數
@@ -29,8 +31,8 @@ public class Article extends IdDomainObject{
 	
 	private Date updatedAt;
 
-	
-	
+	private UserInfo userInfo;
+
 	public String getTitle() {
 		return title;
 	}
@@ -49,20 +51,20 @@ public class Article extends IdDomainObject{
 		return this;
 	}
 
-	public Long getViewCount() {
+	public long getViewCount() {
 		return viewCount;
 	}
 
-	public Article setViewCount(Long viewCount) {
+	public Article setViewCount(long viewCount) {
 		this.viewCount = viewCount;
 		return this;
 	}
-	
-	public Long getCommentCount() {
+
+	public long getCommentCount() {
 		return commentCount;
 	}
 
-	public Article setCommentCount(Long commentCount) {
+	public Article setCommentCount(long commentCount) {
 		this.commentCount = commentCount;
 		return this;
 	}
@@ -85,11 +87,11 @@ public class Article extends IdDomainObject{
 		return this;
 	}
 
-	public Integer getStatus() {
+	public int getStatus() {
 		return status;
 	}
 
-	public Article setStatus(Integer status) {
+	public Article setStatus(int status) {
 		this.status = status;
 		return this;
 	}
@@ -111,5 +113,15 @@ public class Article extends IdDomainObject{
 		this.updatedAt = updatedAt;
 		return this;
 	}
+
+	public UserInfo getUserInfo() {
+		return userInfo;
+	}
+
+	public Article setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
+		return this;
+	}
+	
 	
 }
