@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -56,17 +56,17 @@
 			<form:form  class="form-horizontal" method="post" modelAttribute="article">
 				<input type="hidden" name="_method" value="${_method}"></input>
 			  <div class="control-group">
-			    <label class="control-label" for="title">*标题</label>
+			    <label class="control-label-width" for="title">*标题</label>
 			    <div class="controls">
-			        <form:input path="title"  placeholder="title"/>
+			        <form:input path="title"  placeholder="title" cssStyle="width: 600px"/>
 			        <form:errors path="title" cssClass="formError"/>
 			    	<p class="help-block">必填.</p>
 			    </div>
 			  </div>
 			  <div class="control-group">
-			    <label class="control-label" for="value">*内容</label>
+			    <label class="control-label-width" for="value">*内容</label>
 			    <div class="controls">
-			      <form:textarea path="content" placeholder="value" cssStyle="width:400px" cols="50" rows="10" />
+			      <form:textarea path="content" placeholder="value" cssStyle="width: 600px" />
 			      <form:errors path="content" cssClass="formError"/>
                   <p class="help-block">必填.</p>
 			    </div>
@@ -85,9 +85,16 @@
 	<%@include file="/WEB-INF/views/admin/footer.jsp" %>
     </div>
 <%@include file="/common/common-footer.jsp" %>
+<script src="${ctx }/resources/js/ueditor/editor_config.js"></script><!-- 配置文件 -->
+<script src="${ctx }/resources/js/ueditor/editor_all_min.js"></script><!-- 核心包 發佈版本 修改為 editor_all_min.js -->
 <script type="text/javascript">
 	$(function(){
 		load();
+		 
+		var editor = new UE.ui.Editor();      
+		editor.render("content");
+		//1.2.4以后可以使用一下代码实例化编辑器     //UE.getEditor('content');
+
 		function load(){
 			$('#article_list').addClass('active');
 			var _method = $('input[name="_method"]').val();
@@ -102,7 +109,6 @@
 				
 			}
 		};
-		
 	});
 </script>
   </body>
