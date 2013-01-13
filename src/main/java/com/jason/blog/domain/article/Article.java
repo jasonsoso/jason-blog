@@ -11,25 +11,25 @@ public class Article extends IdDomainObject{
 	private static final long serialVersionUID = 1L;
 
 	
-	@Size(min = 6, max = 128)
+	@Size(min = 4, max = 128,message="标题字符串限制4~128之间")
 	private String title;
 	
-	@Size(min = 6, max = 8192)
+	@Size(min = 4, max = 10000,message="内容字符限制在4~10000之间")
 	private String content;
 	
-	private long viewCount;//瀏覽數
+	private long viewCount;		//浏览数
 	
-	private long commentCount;//評論數
+	private long commentCount;	//评论数
 
 	private int priority;
 
-	private boolean onTop; //是否 置頂
+	private boolean onTop; 		//是否 置顶
 	
-	private int status;//狀態
+	private int status;			//状态
 	
-	private Date createdAt;
+	private Date createdAt;		//创建时间
 	
-	private Date updatedAt;
+	private Date updatedAt;		//最后更新时间
 
 	private UserInfo userInfo;
 

@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
  * UEditor文件上传辅助类
  *
  */
+@SuppressWarnings("restriction")
 public class Uploader {
 	// 输出文件地址
 	private String url = "";

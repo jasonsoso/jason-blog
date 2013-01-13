@@ -8,18 +8,36 @@
   <class name="com.jason.blog.domain.article.Article" table="blog_article" lazy="false">
 	<cache usage="read-write" region="org.hibernate.cache.StandardQueryCache"/>
     <id name="id" column="id">
-      <generator class="native"/>
+        <generator class="native"/>
     </id>
     
-    <property name="title" not-null="true" type="java.lang.String"></property>
-    <property name="content" not-null="true" type="java.lang.String"></property>
-    <property name="viewCount" not-null="false" type="java.lang.Long"></property>
-    <property name="commentCount" not-null="false" type="java.lang.Long"></property>
-    <property name="priority" not-null="false" type="java.lang.Integer"></property>
-    <property name="onTop" not-null="true" type="java.lang.Boolean"></property>
-    <property name="status" not-null="false" type="java.lang.Integer"></property>
-    <property name="createdAt" not-null="true" type="java.util.Date"></property>
-    <property name="updatedAt" not-null="true" type="java.util.Date"></property>
+    <property name="title" type="java.lang.String">
+        <column name="title" not-null="true" ></column>
+    </property>
+    <property name="content"  type="text" >
+        <column name="content" not-null="true" length="10000" ></column>
+    </property>
+    <property name="viewCount"  type="java.lang.Long">
+        <column name="viewCount" not-null="true" default="0"></column>
+    </property>
+    <property name="commentCount"  type="java.lang.Long">
+        <column name="commentCount" not-null="true" default="0"></column>
+    </property>
+    <property name="priority"  type="java.lang.Integer">
+        <column name="priority" not-null="true" default="0"></column>
+    </property>
+    <property name="onTop"  type="java.lang.Boolean">
+        <column name="onTop" not-null="true" default="false"></column>
+    </property>
+    <property name="status" type="java.lang.Integer">
+        <column name="status" not-null="true" default="0"></column>
+    </property>
+    <property name="createdAt"  type="java.util.Date">
+        <column name="createdAt" not-null="true"></column>
+    </property>
+    <property name="updatedAt" type="java.util.Date">
+        <column name="updatedAt" not-null="true" ></column>
+    </property>
     
     <many-to-one name="userInfo" class="com.jason.blog.domain.security.user.UserInfo" column="user_id">
     </many-to-one>
