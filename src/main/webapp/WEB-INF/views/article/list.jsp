@@ -98,6 +98,7 @@
                                                 ${article.userInfo.username}
                                             &nbsp;</td>
 											<td  class="link">
+											         <a target="_blank" class="btn btn-small" href="${ctx }/article/${article.id}"><i class="icon-info-sign"></i> 查看</a>
 													<a class="btn btn-small" href="${ctx }/article/${article.id}/edit"><i class="icon-pencil"></i> 编辑</a>
 													<a class="btn btn-small" href="javascript:;"  onclick="deleteRow('${article.id}')" ><i class="icon-remove"></i> 删除</a>
 												&nbsp;	

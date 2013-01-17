@@ -164,8 +164,19 @@ public class ArticleController extends ControllerSupport {
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String show(@PathVariable("id") long id, Model model) {
-		model.addAttribute(articleService.get(id));
-		return "article/form";
+		Article article = articleService.get(id);
+		model.addAttribute(article);
+		return "WEB-INF/front/template/show";
 	}
+	/**
+	 * @param id
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
+	public String index(Model model) {
+		return "WEB-INF/front/template/index";
+	}
+	
 	
 }
