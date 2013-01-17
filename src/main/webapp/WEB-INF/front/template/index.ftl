@@ -1,74 +1,18 @@
-<#include "/common/front/taglibs.ftl" />
+<#include "common-taglibs.ftl" />
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>杰森博客</title>
-    <#include "/common/front/common-header.ftl" />
-    <link rel="stylesheet" type="text/css" href="${ctx }/resources/js/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css"/>
-    
+    <#include "common-header.ftl" />
  </head>
   <body>
     
-
-    <!-- head start-->
-    <div class="navbar navbar-fixed-top">
-              <div class="navbar-inner">
-                <div class="container">
-                  <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </a>
-                  <a class="brand" href="#">Title</a>
-                  <div class="nav-collapse collapse navbar-responsive-collapse">
-                    <ul class="nav">
-                      <li class="active"><a href="#">Home</a></li>
-                      <li><a href="#">Link</a></li>
-                      <li><a href="#">Link</a></li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
-                          <li class="divider"></li>
-                          <li class="nav-header">Nav header</li>
-                          <li><a href="#">Separated link</a></li>
-                          <li><a href="#">One more separated link</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                    <form class="navbar-search pull-left" action="">
-                      <input type="text" class="search-query span2" placeholder="Search">
-                    </form>
-                    <ul class="nav pull-right">
-                      <li><a href="#">Link</a></li>
-                      <li class="divider-vertical"></li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Action</a></li>
-                          <li><a href="#">Another action</a></li>
-                          <li><a href="#">Something else here</a></li>
-                          <li class="divider"></li>
-                          <li><a href="#">Separated link</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div><!-- /.nav-collapse -->
-                </div>
-              </div><!-- /navbar-inner -->
-            </div>
-    <!-- head end-->
-    
-    
+    <#include "header.ftl" /><!--head-->
     
     <div class="container">
       
-    
       <div class="row-fluid">
-        
         
         <!--left start-->
         <div class="span8">
@@ -110,26 +54,25 @@
         <!--right start-->
         <div class="span4">
 
-
             <ul id="myTab" class="nav nav-tabs">
-              <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-              <li><a href="#profile" data-toggle="tab">Profile</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <li class="active"><a href="#home" data-toggle="tab">最新博客</a></li>
+              <li><a href="#profile" data-toggle="tab">最热博主</a></li>
+              <!--<li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="#dropdown1" data-toggle="tab">@fat</a></li>
                   <li><a href="#dropdown2" data-toggle="tab">@mdo</a></li>
                 </ul>
-              </li>
+              </li>-->
             </ul>
             <div id="myTabContent" class="tab-content">
               <div class="tab-pane fade in active" id="home">
               
                     <ol>
-                      <li>Lorem ipsum dolor sit amet</li>
-                      <li>Consectetur adipiscing elit</li>
-                      <li>Integer molestie lorem at massa</li>
-                      <li>Facilisis in pretium nisl aliquet</li>
+                      <li>記錄Oracle常用SQL </li>
+                      <li>MongoDB学习(五、所谓的高级更新) </li>
+                      <li>作出艰难的决定 </li>
+                      <li>《我为何而生》 </li>
                       <li>Nulla volutpat aliquam velit</li>
                       <li>Faucibus porta lacus fringilla vel</li>
                       <li>Aenean sit amet erat nunc</li>
@@ -138,14 +81,14 @@
                     
               </div>
               <div class="tab-pane fade" id="profile">
-                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. </p>
               </div>
-              <div class="tab-pane fade" id="dropdown1">
+              <!--<div class="tab-pane fade" id="dropdown1">
                 <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
               </div>
               <div class="tab-pane fade" id="dropdown2">
                 <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
-              </div>
+              </div>-->
             </div>
 
 
@@ -158,11 +101,8 @@
              
              
              
-             
-             
 <div class="list-widget">
     <a href="/jkkorn" title="jkkorn"><img src="https://secure.gravatar.com/avatar/9458ebc0d4ecd98cca53e2b9bb74c613/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
-    
     <div class="list-head">
         <h3><a href="/jkkorn/great-essays">Great essays</a></h3>
         <div class="list-meta">by <a href="/jkkorn">jkkorn</a> · 170 followers</div>
@@ -190,130 +130,94 @@
     </ul>
 </div>
 
-
-
-
-
-
-
 <div class="list-widget">
     <a href="/rickyyean" title="rickyyean"><img src="https://secure.gravatar.com/avatar/967de1a609c97aac1aaffc452df791d7/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
-    
     <div class="list-head">
         <h3><a href="/rickyyean/profiles-of-people">Profiles of people</a></h3>
         <div class="list-meta">by <a href="/rickyyean">rickyyean</a> · 218 followers</div>
-
     </div>
-    
     <ul>
-        
         <li>
             <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=management.fortune.cnn.com');"></i>
             <div>
                 <a href="/rickyyean/profiles-of-people">Steve Jobs vs. Sam Walton: The tale of the tape - Fortune Management</a>
             </div>
         </li>
-        
         <li>
             <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=sports.yahoo.com');"></i>
             <div>
                 <a href="/rickyyean/profiles-of-people">After disappointing breakup with Knicks, Jeremy Lin building a better relationship with Rockets - Yahoo! Sports</a>
             </div>
         </li>
-        
         <li>
             <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=www.fastcompany.com');"></i>
             <div>
                 <a href="/rickyyean/profiles-of-people">Bill Nguyen: The Boy In The Bubble | Fast Company</a>
             </div>
         </li>
-        
         <li><a href="/rickyyean/profiles-of-people" class="list-view">View all 7 clips ›</a></li>
     </ul>
 </div>
 
 
-
-
-
-
 <div class="list-widget">
     <a href="/jg" title="jg"><img src="https://secure.gravatar.com/avatar/b0734a381b23823745c79e541d530068/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
-    
     <div class="list-head">
         <h3><a href="/jg/beautiful-landing-pages">Beautiful Landing Pages</a></h3>
         <div class="list-meta">by <a href="/jg">jg</a> · 15176 followers</div>
     </div>
-    
     <ul>
-        
         <li>
             <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=wantful.com');"></i>
             <div>
                 <a href="/jg/beautiful-landing-pages">Wantful</a>
             </div>
         </li>
-        
         <li>
             <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=www.onswipe.com');"></i>
             <div>
                 <a href="/jg/beautiful-landing-pages">Onswipe</a>
             </div>
         </li>
-        
         <li>
             <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=appstack.com');"></i>
             <div>
                 <a href="/jg/beautiful-landing-pages">Appstack | Mobile Made Easy</a>
             </div>
         </li>
-        
         <li><a href="/jg/beautiful-landing-pages" class="list-view">View all 32 clips ›</a></li>
     </ul>
 </div>
 
 
-
-
-
-
 <div class="list-widget">
     <a href="/jacksometer" title="jacksometer"><img src="https://secure.gravatar.com/avatar/21d340eb4f8c700ba2efd32666e9bdab/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
-    
     <div class="list-head">
         <h3><a href="/jacksometer/photojournalism">Photojournalism</a></h3>
         <div class="list-meta">by <a href="/jacksometer">jacksometer</a> · 177 followers</div>
     </div>
-    
     <ul>
-        
         <li>
             <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=www.theatlantic.com');"></i>
             <div>
                 <a href="/jacksometer/photojournalism">A Cold Winter in Afghanistan</a>
             </div>
         </li>
-        
         <li>
             <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=www.hidden-lives.org.uk');"></i>
             <div>
                 <a href="/jacksometer/photojournalism">Hidden Lives. The Untold Story of Urban Refugees</a>
             </div>
         </li>
-        
         <li>
             <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=the-war-diaries.com');"></i>
             <div>
                 <a href="/jacksometer/photojournalism">Iran like it was 1999</a>
             </div>
         </li>
-        
         <li><a href="/jacksometer/photojournalism" class="list-view">View all 88 clips ›</a></li>
     </ul>
 </div>
-
-
-
 
 
 <div class="list-widget">
@@ -323,181 +227,123 @@
         <h3><a href="/michaelchen/design-tools">Design Tools</a></h3>
         <div class="list-meta">by <a href="/michaelchen">michaelchen</a> · 789 followers</div>
     </div>
-    
     <ul>
-        
         <li>
             <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=grabbox.devsoft.no');"></i>
             <div>
                 <a href="/michaelchen/design-tools">GrabBox | Simple screenshot sharing for Mac</a>
             </div>
         </li>
-
     </ul>
 </div>
 
 
-
-
-
-
 <div class="list-widget">
     <a href="/steve8708" title="steve8708"><img src="https://secure.gravatar.com/avatar/28645e25065f112e3e2acce166982653/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
-    
     <div class="list-head">
         <h3><a href="/steve8708/js-performance">JS performance</a></h3>
         <div class="list-meta">by <a href="/steve8708">steve8708</a> · 392 followers</div>
     </div>
-    
     <ul>
-        
         <li>
             <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=engineering.linkedin.com');"></i>
             <div>
                 <a href="/steve8708/js-performance">Blazing fast node.js: 10 performance tips from LinkedIn Mobile | LinkedIn Engineering</a>
             </div>
         </li>
-        
         <li>
             <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=news.ycombinator.com');"></i>
             <div>
                 <a href="/steve8708/js-performance">Backbone.js views done right | Hacker News</a>
             </div>
         </li>
-        
         <li>
             <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=www.silverstripe.org');"></i>
             <div>
                 <a href="/steve8708/js-performance">Javascript Performance » SilverStripe.org - Open Source CMS / Framework</a>
             </div>
         </li>
-        
         <li><a href="/steve8708/js-performance" class="list-view">View all 6 clips ›</a></li>
     </ul>
 </div>
 
 
-
-
-
-
 <div class="list-widget">
     <a href="/steve8708" title="steve8708"><img src="https://secure.gravatar.com/avatar/28645e25065f112e3e2acce166982653/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
-    
     <div class="list-head">
         <h3><a href="/steve8708/js-performance">JS performance</a></h3>
         <div class="list-meta">by <a href="/steve8708">steve8708</a> · 392 followers</div>
     </div>
-    
     <ul>
-        
         <li>
             <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=engineering.linkedin.com');"></i>
             <div>
                 <a href="/steve8708/js-performance">Blazing fast node.js: 10 performance tips from LinkedIn Mobile | LinkedIn Engineering</a>
             </div>
         </li>
-        
         <li>
             <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=news.ycombinator.com');"></i>
             <div>
                 <a href="/steve8708/js-performance">Backbone.js views done right | Hacker News</a>
             </div>
         </li>
-        
         <li>
             <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=www.silverstripe.org');"></i>
             <div>
                 <a href="/steve8708/js-performance">Javascript Performance » SilverStripe.org - Open Source CMS / Framework</a>
             </div>
         </li>
-        
         <li><a href="/steve8708/js-performance" class="list-view">View all 6 clips ›</a></li>
     </ul>
 </div>
 
 
-
-
-
-             
         </div>
     <hr/>
-    <footer>
-        <div class="container">
-            <p class="pull-right"><a href="#">Back to top</a></p>
-            <p align="center">&copy; BootstrapWP 2012</p>
-            <div align="center" id="text-7" class="widget widget_text">            
-                <div class="textwidget">Developed for WordPress by <a href="#" >Rachel Baker</a> , a freelance web developer.  </div>
-            </div>    
-        </div>
-    
-    </footer>
-
+<#include "footer.ftl" /><!--foot-->
     </div>
 
-
-<script src="${ctx }/resources/bootstrap/js/jquery.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-transition.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-alert.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-modal.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-dropdown.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-scrollspy.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-tab.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-tooltip.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-popover.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-button.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-collapse.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-carousel.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-typeahead.js"></script>
-<script type="text/javascript" charset="utf-8" src="${ctx }/resources/js/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
-<script src="${ctx }/resources/js/jquery.masonry.min.js"></script>
-<script src="${ctx }/resources/js/admin.js"></script>
-
+<#include "common-footer.ftl" />
 <script type="text/javascript">
-    $(function(){
+
+$(function(){
     
     init_masonry();
     
-function init_masonry(){
-    var $container = $('#content');
-
-    var gutter = 15;
-    var min_width = 350;
-    $container.imagesLoaded( function(){
-        $container.masonry({
-            itemSelector : '.list-widget',
-            gutterWidth: gutter,
-            isAnimated: true,
-              columnWidth: function( containerWidth ) {
-                var num_of_boxes = (containerWidth/min_width | 0);
-
-                var box_width = (((containerWidth - (num_of_boxes-1)*gutter)/num_of_boxes) | 0) ;
-
-                if (containerWidth < min_width) {
-                    box_width = containerWidth;
-                }
-
-                $('.list-widget').width(box_width);
-
-                return box_width;
-              }
+    function init_masonry(){
+        var $container = $('#content');
+        var gutter = 15;
+        var min_width = 350;
+        $container.imagesLoaded( function(){
+            $container.masonry({
+                itemSelector : '.list-widget',
+                gutterWidth: gutter,
+                isAnimated: true,
+                  columnWidth: function( containerWidth ) {
+                    var num_of_boxes = (containerWidth/min_width | 0);
+                    var box_width = (((containerWidth - (num_of_boxes-1)*gutter)/num_of_boxes) | 0) ;
+                    if (containerWidth < min_width) {
+                        box_width = containerWidth;
+                    }
+                    $('.list-widget').width(box_width);
+                    return box_width;
+                  }
+            });
         });
-    });
-}
+    }
 
     
     //代码高亮
     SyntaxHighlighter.highlight();
     //调整左右对齐
-    //for(var i=0,di;di=SyntaxHighlighter.highlightContainers[i++];){
-    //        var tds = di.getElementsByTagName('td');
-    //        for(var j=0,li,ri;li=tds[0].childNodes[j];j++){
-    //            ri = tds[1].firstChild.childNodes[j];
-    //           ri.style.height = li.style.height = ri.offsetHeight + 'px';
-    //       }
-    // }
-    });
+    for(var i=0,di;di=SyntaxHighlighter.highlightContainers[i++];){
+            var tds = di.getElementsByTagName('td');
+            for(var j=0,li,ri;li=tds[0].childNodes[j];j++){
+                ri = tds[1].firstChild.childNodes[j];
+               ri.style.height = li.style.height = ri.offsetHeight + 'px';
+           }
+     }
+});
 </script>
   </body>
 </html>

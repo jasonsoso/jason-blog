@@ -1,133 +1,128 @@
-<#include "/common/front/taglibs.ftl" />
+<#include "common-taglibs.ftl" />
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>杰森博客</title>
-    <#include "/common/front/common-header.ftl" />
-    <link rel="stylesheet" type="text/css" href="${ctx }/resources/js/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css"/>
-    
+    <#include "common-header.ftl" />
  </head>
   <body>
     
-
-
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/" style="padding: 5px 20px 5px;">
-            <img class="img-rounded" width="30" height="30" alt="" src="${ctx}/resources/bootstrap/ico/login.png">
-            杰森博客 后台管理
-          </a>
-          <div class="nav-collapse collapse">
-            <p class="navbar-text pull-right">
-                 亲！欢迎你:<a href="#" class="navbar-link">abc军</a>
-                &nbsp; | &nbsp;
-                <a href="${ctx}/j_spring_security_logout" data-method="delete" rel="nofollow"><span class="label label-important">退出</span></a>
-            </p>
-            <ul class="nav">
-              <li class="active"><a href="#">首页</a></li>
-              <li><a href="#about">关于</a></li>
-              <li><a href="#contact">联系我</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    <#include "header.ftl" /><!--head-->
     
-    
-    
-    <div class="container-fluid">
+    <div class="container">
+      
       <div class="row-fluid">
         
+        <!--left start-->
+        <div class="span8">
+            
+          <section>
+              <div class="page-header">
+                <h2>${article.title}</h2>
+              </div>
+    
+              <p>
+                ${article.content}
+              </p>
+          </section>
         
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-               <li class="nav-header"><i class="icon-user"></i>系统管理</li>
-               <li id="user_list" ><a href="${ctx }/security/user/list"><i class="icon-list"></i>用户管理</a></li>
-               <li id="role_list" ><a href="${ctx }/security/role/list"><i class="icon-list"></i>角色管理</a></li>
-               <li id="authority_list" ><a href="${ctx }/security/authority/list"><i class="icon-list"></i>权限管理</a></li>
-               <li id="resource_list"><a href="${ctx }/security/resource/list"><i class="icon-list"></i>资源管理</a></li>
-               <li id="article_list"><a href="${ctx }/article/list"><i class="icon-list"></i>文章管理</a></li>
-             </ul>
-          </div>
         </div>
+        <!--left end-->
         
-        
-        
-        <div class="span9">
-           
-            <ul class="breadcrumb">
-              <li>
-                <a href="${ctx }/admin">首页</a> <span class="divider">/</span>
-              </li>
-              <li>
-                <a href="${ctx }/article/list">文章管理</a> <span class="divider">/</span>
-              </li>
-              <li id="breadcrumb_active" class="active">查看</li>
+        <!--right start-->
+        <div class="span4">
+
+            <ul id="myTab" class="nav nav-tabs">
+              <li class="active"><a href="#home" data-toggle="tab">最新博客</a></li>
+              <li><a href="#profile" data-toggle="tab">最热博主</a></li>
+              <!--<li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#dropdown1" data-toggle="tab">@fat</a></li>
+                  <li><a href="#dropdown2" data-toggle="tab">@mdo</a></li>
+                </ul>
+              </li>-->
             </ul>
-            
-            
-              <div class="control-group">
-                <div class="controls">
-                   ${article.title}
-                </div>
+            <div id="myTabContent" class="tab-content">
+              <div class="tab-pane fade in active" id="home">
+              
+                    <ol>
+                      <li>記錄Oracle常用SQL </li>
+                      <li>MongoDB学习(五、所谓的高级更新) </li>
+                      <li>作出艰难的决定 </li>
+                      <li>《我为何而生》 </li>
+                      <li>Nulla volutpat aliquam velit</li>
+                      <li>Faucibus porta lacus fringilla vel</li>
+                      <li>Aenean sit amet erat nunc</li>
+                      <li>Eget porttitor lorem</li>
+                    </ol>
+                    
               </div>
-              <div class="control-group">
-                <div class="controls">
-                 ${article.content}
-                </div>
+              <div class="tab-pane fade" id="profile">
+                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. </p>
               </div>
+              <!--<div class="tab-pane fade" id="dropdown1">
+                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+              </div>
+              <div class="tab-pane fade" id="dropdown2">
+                <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+              </div>-->
+            </div>
 
-          
+
         </div>
+        <!--right end-->
+        
+        
       </div>
-    
-    
-    
-    <footer>
-        <p>&copy; Company 2012 www.jasonsoso.com 杰森工作室</p>
-    </footer>
-
-
+      
+      
+    <hr/>
+<#include "footer.ftl" /><!--foot-->
     </div>
 
-
-<script src="${ctx }/resources/bootstrap/js/jquery.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-transition.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-alert.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-modal.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-dropdown.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-scrollspy.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-tab.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-tooltip.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-popover.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-button.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-collapse.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-carousel.js"></script>
-<script src="${ctx }/resources/bootstrap/js/bootstrap-typeahead.js"></script>
-<script type="text/javascript" charset="utf-8" src="${ctx }/resources/js/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
-<script src="${ctx }/resources/js/admin.js"></script>
-
-
+<#include "common-footer.ftl" />
 <script type="text/javascript">
-    $(function(){
+
+$(function(){
+    
+    init_masonry();
+    
+    function init_masonry(){
+        var $container = $('#content');
+        var gutter = 15;
+        var min_width = 350;
+        $container.imagesLoaded( function(){
+            $container.masonry({
+                itemSelector : '.list-widget',
+                gutterWidth: gutter,
+                isAnimated: true,
+                  columnWidth: function( containerWidth ) {
+                    var num_of_boxes = (containerWidth/min_width | 0);
+                    var box_width = (((containerWidth - (num_of_boxes-1)*gutter)/num_of_boxes) | 0) ;
+                    if (containerWidth < min_width) {
+                        box_width = containerWidth;
+                    }
+                    $('.list-widget').width(box_width);
+                    return box_width;
+                  }
+            });
+        });
+    }
+
+    
+    //代码高亮
     SyntaxHighlighter.highlight();
     //调整左右对齐
-    //for(var i=0,di;di=SyntaxHighlighter.highlightContainers[i++];){
-    //        var tds = di.getElementsByTagName('td');
-    //        for(var j=0,li,ri;li=tds[0].childNodes[j];j++){
-    //            ri = tds[1].firstChild.childNodes[j];
-    //           ri.style.height = li.style.height = ri.offsetHeight + 'px';
-    //       }
-    // }
-    });
+    for(var i=0,di;di=SyntaxHighlighter.highlightContainers[i++];){
+            var tds = di.getElementsByTagName('td');
+            for(var j=0,li,ri;li=tds[0].childNodes[j];j++){
+                ri = tds[1].firstChild.childNodes[j];
+               ri.style.height = li.style.height = ri.offsetHeight + 'px';
+           }
+     }
+});
 </script>
   </body>
 </html>

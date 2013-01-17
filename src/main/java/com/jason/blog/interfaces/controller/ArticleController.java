@@ -157,6 +157,9 @@ public class ArticleController extends ControllerSupport {
 		success(redirectAttributes,"删除文章成功！");
 		return REDIRECT_LIST;
 	}
+	
+	//----------------------------- 华丽的 分割符号--------------------------------
+	
 	/**
 	 * @param id
 	 * @param model

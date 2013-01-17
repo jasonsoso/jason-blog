@@ -1,9 +1,10 @@
-<#include "taglibs.ftl">
+<#include "common-taglibs.ftl">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="杰森博客 管理后台">
+<meta name="description" content="杰森博客">
 <meta name="author" content="jasonsoso.com">
 <link href="${ctx }/resources/bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="${ctx }/resources/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="${ctx }/resources/js/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet"/>
 <link href="${ctx }/resources/css/admin.css" rel="stylesheet">
 
 <!--[if lt IE 9]>
