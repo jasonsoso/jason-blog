@@ -46,4 +46,22 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleRepository.queryPage(page, hql, values);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.jason.blog.application.article.ArticleService#getPre(com.jason.blog.domain.article.Article)
+	 */
+	@Override
+	public Article getPrev(Article article) {
+		String hql = "select a from Article a where id=(select max(id) from Article where id < ? and user.id=?)";
+		return (Article) articleRepository.queryUnique(hql, article.getId(),article.getUser().getId());
+	}
+
+	/* (non-Javadoc)
+	 * @see com.jason.blog.application.article.ArticleService#getNext(com.jason.blog.domain.article.Article)
+	 */
+	@Override
+	public Article getNext(Article article) {
+		String hql = "select a from Article a where id=(select min(id) from Article where id > ? and user.id=?)";
+		return (Article) articleRepository.queryUnique(hql, article.getId(),article.getUser().getId());
+	}
+
 }

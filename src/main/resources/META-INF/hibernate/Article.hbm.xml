@@ -39,7 +39,7 @@
         <column name="updatedAt" not-null="true" ></column>
     </property>
     
-    <many-to-one name="userInfo" class="com.jason.blog.domain.security.user.UserInfo" column="user_id">
+    <many-to-one name="user" class="com.jason.blog.domain.security.user.UserInfo" column="user_id">
     </many-to-one>
     
   </class>

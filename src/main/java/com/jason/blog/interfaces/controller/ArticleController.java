@@ -91,7 +91,7 @@ public class ArticleController extends ControllerSupport {
 		Date now = new Date();
 		entity.setCreatedAt(now);
 		entity.setUpdatedAt(now);
-		entity.setUserInfo(SecurityHolder.getCurrentUser());
+		entity.setUser(SecurityHolder.getCurrentUser());
 		
 		articleService.store(entity);
 		
@@ -168,7 +168,11 @@ public class ArticleController extends ControllerSupport {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String show(@PathVariable("id") long id, Model model) {
 		Article article = articleService.get(id);
-		model.addAttribute(article);
+		Article prev = articleService.getPrev(article);
+		Article next = articleService.getNext(article);
+		model.addAttribute(article)
+			 .addAttribute("prev",prev)
+			 .addAttribute("next",next);
 		return "WEB-INF/front/template/show";
 	}
 	/**

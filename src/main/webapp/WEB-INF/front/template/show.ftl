@@ -7,11 +7,9 @@
     <#include "common-header.ftl" />
  </head>
   <body>
-    
     <#include "header.ftl" /><!--head-->
     
     <div class="container">
-      
       <div class="row-fluid">
         
         <!--left start-->
@@ -23,9 +21,35 @@
               </div>
     
               <p>
+                <!-- content start-->
                 ${article.content}
+                <!-- content end-->
               </p>
           </section>
+          
+          <!-- pager:previous and next -->
+          <ul class="pager">
+            <#if prev?exists>
+               <li class="previous">
+                <a href="${ctx}/article/${prev.id}">&larr; Older</a>
+               </li>
+            <#else>
+               <li class="previous disabled">
+                <a href="javascript:;">&larr; Older</a>
+               </li>
+            </#if>
+            
+            <#if next?exists>
+               <li class="next">
+                <a href="${ctx}/article/${next.id}">Newer &rarr;</a>
+              </li>
+            <#else>
+               <li class="next disabled">
+                <a href="javascript:;">Newer &rarr;</a>
+              </li>
+            </#if>
+           </ul>
+
         
         </div>
         <!--left end-->
@@ -34,11 +58,11 @@
         <div class="span4">
 
             <div class="thumbnail">
-                  <img src="http://placehold.it/300x200" alt="">
+                  <img class="img-polaroid" src="${ctx}/resources/images/me.png" alt="">
                   <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn">Action</a></p>
+                    <h3>${article.user.username}</h3>
+                    <p>Love a person is not easy</p>
+                    <p><a href="#" class="btn">关注我</a></p>
                   </div>
                 </div>
 

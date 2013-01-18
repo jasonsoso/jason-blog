@@ -18,4 +18,6 @@ public interface ArticleRepository {
 	List<Article> query(String queryString, Object... values);
 
 	Page<Article> queryPage(Page<Article> page, String hql, Map<String, Object> values);
+	
+	Object queryUnique(String queryString, Object... values);
 }

@@ -31,7 +31,7 @@ public class Article extends IdDomainObject{
 	
 	private Date updatedAt;		//最后更新时间
 
-	private UserInfo userInfo;
+	private UserInfo user;
 
 	public String getTitle() {
 		return title;
@@ -114,13 +114,12 @@ public class Article extends IdDomainObject{
 		return this;
 	}
 
-	public UserInfo getUserInfo() {
-		return userInfo;
+	public UserInfo getUser() {
+		return user;
 	}
 
-	public Article setUserInfo(UserInfo userInfo) {
-		this.userInfo = userInfo;
-		return this;
+	public void setUser(UserInfo user) {
+		this.user = user;
 	}
 	
 	

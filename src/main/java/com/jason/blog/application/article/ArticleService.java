@@ -44,5 +44,14 @@ public interface ArticleService {
 	 * @return
 	 */
 	Page<Article> queryPage(Page<Article> page, String hql, Map<String, Object> values);
-
+	/**
+	 * 
+	 * @date 2013-1-18  下午08:43:41
+	 */
+	Article getPrev(Article article);
+	/**
+	 * @date 2013-1-18  下午08:44:03
+	 */
+	Article getNext(Article article);
+	
 }
