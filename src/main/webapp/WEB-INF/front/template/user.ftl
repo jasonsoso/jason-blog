@@ -17,40 +17,16 @@
             
           <section>
               <div class="page-header">
-                <h2>${article.title}</h2>
+                <h2>title</h2>
               </div>
     
               <p>
                 <!-- content start-->
-                ${article.content}
+                content
                 <!-- content end-->
               </p>
           </section>
           
-          <!-- pager:previous and next -->
-          <ul class="pager">
-            <#if prev?exists>
-               <li class="previous">
-                <a href="${ctx}/article/${prev.id}">&larr; Older</a>
-               </li>
-            <#else>
-               <li class="previous disabled">
-                <a href="javascript:;">&larr; Older</a>
-               </li>
-            </#if>
-            
-            <#if next?exists>
-               <li class="next">
-                <a href="${ctx}/article/${next.id}">Newer &rarr;</a>
-              </li>
-            <#else>
-               <li class="next disabled">
-                <a href="javascript:;">Newer &rarr;</a>
-              </li>
-            </#if>
-           </ul>
-
-        
         </div>
         <!--left end-->
         
@@ -60,7 +36,7 @@
             <div class="thumbnail">
                   <img class="img-polaroid" src="${ctx}/resources/images/me.png" alt="">
                   <div class="caption">
-                    <h3><a href="${ctx}/user/${article.user.id}">${article.user.username}</a></h3>
+                    <h3><a href="${ctx}/user/${user.id}">${user.username}</a></h3>
                     <p>Love a person is not easy</p>
                     <p><a href="#" class="btn">关注我</a></p>
                   </div>

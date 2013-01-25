@@ -44,7 +44,7 @@ import com.jason.blog.interfaces.support.ControllerSupport;
  */
 @Controller
 @RequestMapping(value = "/security/user")
-public class UserController extends ControllerSupport {
+public class UserInfoController extends ControllerSupport {
 	
 	private static final String REDIRECT_LIST = "redirect:/security/user/list";
 	

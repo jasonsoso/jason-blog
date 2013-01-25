@@ -95,7 +95,7 @@
 											     <fmt:formatDate value="${article.updatedAt}" pattern="yyyy-MM-dd hh:mm"/>
 											&nbsp;</td>
                                             <td>
-                                                ${article.userInfo.username}
+                                                ${article.user.username}
                                             &nbsp;</td>
 											<td  class="link">
 											         <a target="_blank" class="btn btn-small" href="${ctx }/article/${article.id}"><i class="icon-info-sign"></i> 查看</a>

@@ -19,4 +19,6 @@ public class HibernateArticleRepository extends HibernateRepositorySupport<Long,
 		
 	}
 
+
+
 }
