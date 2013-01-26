@@ -9,16 +9,7 @@ import com.jason.blog.infrastruture.persist.hibernate.HibernateRepositorySupport
 public class HibernateArticleRepository extends HibernateRepositorySupport<Long, Article> implements ArticleRepository {
 
 	@Override
-	public Article get(long id) {
-		return super.get(id);
-	}
-
-	@Override
-	public void delete(long id) {
+	public void delete(Long id) {
 		super.delete(super.get(id));
-		
 	}
-
-
-
 }

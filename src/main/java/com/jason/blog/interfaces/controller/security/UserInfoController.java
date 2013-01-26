@@ -119,7 +119,7 @@ public class UserInfoController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
-	public String edit(@PathVariable("id") String id, Model model) {
+	public String edit(@PathVariable("id") Long id, Model model) {
 
 		model.addAttribute("_method", "put")
 				.addAttribute(userInfoService.get(id).fillupRoleMap())
@@ -133,7 +133,7 @@ public class UserInfoController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.PUT)
-	public String edit(@PathVariable("id") String id, HttpServletRequest request,RedirectAttributes redirectAttributes) {
+	public String edit(@PathVariable("id") Long id, HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		try {
 			UserInfo entity = userInfoService.get(id);
 
@@ -172,7 +172,7 @@ public class UserInfoController extends ControllerSupport {
 
 		String[] items = EntityUtils.nullSafe(request.getParameterValues("items"), new String[] {});
 		for (String item : items) {
-			userInfoService.delete(item);
+			userInfoService.delete(Long.valueOf(item));
 		}
 		success(redirectAttributes,"删除用户成功！");
 		return REDIRECT_LIST;
@@ -183,7 +183,7 @@ public class UserInfoController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.DELETE)
-	public String delete(@PathVariable("id") String id,RedirectAttributes redirectAttributes) {
+	public String delete(@PathVariable("id") Long id,RedirectAttributes redirectAttributes) {
 		userInfoService.delete(id);
 		success(redirectAttributes,"删除用户成功！");
 		return REDIRECT_LIST;

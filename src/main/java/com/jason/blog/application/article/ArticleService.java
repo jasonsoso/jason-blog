@@ -13,7 +13,7 @@ public interface ArticleService {
 	 * 
 	 * @param id
 	 */
-	void delete(long id);
+	void delete(Long id);
 
 	/**
 	 * 
@@ -26,7 +26,7 @@ public interface ArticleService {
 	 * @param id
 	 * @return
 	 */
-	Article get(long id);
+	Article get(Long id);
 
 	/**
 	 * 

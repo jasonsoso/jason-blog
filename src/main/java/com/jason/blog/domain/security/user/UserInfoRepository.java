@@ -12,9 +12,9 @@ public interface UserInfoRepository {
 
 	List<UserInfo> query(String queryString, Object... values);
 
-	UserInfo get(String id);
+	UserInfo get(Long id);
 
 	void store(UserInfo entity);
 
-	void delete(String id);
+	void delete(Long id);
 }

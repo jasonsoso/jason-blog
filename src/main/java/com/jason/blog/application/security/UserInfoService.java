@@ -13,7 +13,7 @@ public interface UserInfoService {
 	 * 
 	 * @param id
 	 */
-	void delete(String id);
+	void delete(Long id);
 
 	/**
 	 * 
@@ -26,7 +26,7 @@ public interface UserInfoService {
 	 * @param id
 	 * @return
 	 */
-	UserInfo get(String id);
+	UserInfo get(Long id);
 
 	/**
 	 * 

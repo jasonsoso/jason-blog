@@ -9,11 +9,11 @@ import com.jason.blog.infrastruture.persist.hibernate.query.Page;
 
 public interface ArticleRepository {
 
-	Article get(long id);
+	Article get(Long id);
 
 	void store(Article entity);
 
-	void delete(long id);
+	void delete(Long id);
 
 	List<Article> query(String queryString, Object... values);
 

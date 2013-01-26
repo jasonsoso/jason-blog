@@ -7,7 +7,7 @@ import com.jason.blog.domain.security.user.UserInfoRepository;
 import com.jason.blog.infrastruture.persist.hibernate.HibernateRepositorySupport;
 
 @Repository
-public class HibernateUserInfoRepository extends HibernateRepositorySupport<String, UserInfo> implements UserInfoRepository {
+public class HibernateUserInfoRepository extends HibernateRepositorySupport<Long, UserInfo> implements UserInfoRepository {
 
 	@Override
 	public UserInfo queryByName(String username) {
@@ -15,7 +15,8 @@ public class HibernateUserInfoRepository extends HibernateRepositorySupport<Stri
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(Long id) {
 		super.delete(super.get(id));
 	}
+
 }

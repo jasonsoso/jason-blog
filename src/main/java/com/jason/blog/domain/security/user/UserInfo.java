@@ -17,12 +17,12 @@ import org.springframework.security.authentication.encoding.PasswordEncoder;
 
 import com.jason.blog.domain.security.authority.Authority;
 import com.jason.blog.domain.security.role.Role;
-import com.jason.blog.domain.shared.AbstractDomainObject;
+import com.jason.blog.domain.shared.IdDomainObject;
 import com.jason.blog.infrastruture.util.ConvertUtils;
 
 
 @Entity
-public class UserInfo extends AbstractDomainObject{
+public class UserInfo extends IdDomainObject{
 	private static final long serialVersionUID = 1L;
 
 	@NotNull(message="用户名不能为空！") 

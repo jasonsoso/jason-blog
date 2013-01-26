@@ -105,7 +105,7 @@ public class ArticleController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
-	public String edit(@PathVariable("id") long id, Model model) {
+	public String edit(@PathVariable("id") Long id, Model model) {
 
 		model.addAttribute("_method", "put")
 				.addAttribute(articleService.get(id));
@@ -118,7 +118,7 @@ public class ArticleController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.PUT)
-	public String edit(@PathVariable("id") long id, HttpServletRequest request,RedirectAttributes redirectAttributes) {
+	public String edit(@PathVariable("id") Long id, HttpServletRequest request,RedirectAttributes redirectAttributes) {
 		try {
 			Article entity = articleService.get(id);
 
@@ -141,7 +141,7 @@ public class ArticleController extends ControllerSupport {
 
 		String[] items = EntityUtils.nullSafe(request.getParameterValues("items"), new String[] {});
 		for (String item : items) {
-			articleService.delete(Integer.parseInt(item));
+			articleService.delete(Long.valueOf(item));
 		}
 		success(redirectAttributes,"删除文章成功！");
 		return REDIRECT_LIST;
@@ -152,7 +152,7 @@ public class ArticleController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.DELETE)
-	public String delete(@PathVariable("id") long id,RedirectAttributes redirectAttributes) {
+	public String delete(@PathVariable("id") Long id,RedirectAttributes redirectAttributes) {
 		articleService.delete(id);
 		success(redirectAttributes,"删除文章成功！");
 		return REDIRECT_LIST;
@@ -166,7 +166,7 @@ public class ArticleController extends ControllerSupport {
 	 * @return
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String show(@PathVariable("id") long id, Model model) {
+	public String show(@PathVariable("id") Long id, Model model) {
 		Article article = articleService.get(id);
 		Article prev = articleService.getPrev(article);
 		Article next = articleService.getNext(article);

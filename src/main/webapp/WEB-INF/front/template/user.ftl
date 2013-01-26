@@ -15,17 +15,22 @@
         <!--left start-->
         <div class="span8">
             
-          <section>
-              <div class="page-header">
-                <h2>title</h2>
-              </div>
-    
-              <p>
-                <!-- content start-->
-                content
-                <!-- content end-->
-              </p>
-          </section>
+           <#list page.result as article>
+                <section>
+                  <div class="page-header">
+                    <h2>${article.title}</h2>
+                  </div>
+                  <p>
+                    <!-- content start-->
+                    ${article.content}
+                    <!-- content end-->
+                  </p>
+              </section>
+           </#list>
+           <div class="pagination pagination-centered">
+               <#assign pagingUrl="${ctx}/user/${user.id}/blog">
+               <#include  "paging.ftl">
+           </div>
           
         </div>
         <!--left end-->

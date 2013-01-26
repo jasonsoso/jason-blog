@@ -22,7 +22,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(Long id) {
 		userInfoRepository.delete(id);
 	}
 
@@ -32,7 +32,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
-	public UserInfo get(String id) {
+	public UserInfo get(Long id) {
 		return userInfoRepository.get(id);
 	}
 
