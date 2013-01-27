@@ -39,7 +39,6 @@ public class Resource extends AbstractDomainObject{
 		for (Authority authority : getAuthorities()) {
 			authorityNames.add(authority.getName());
 		}
-
 		return authorityNames;
 	}
 	
@@ -49,23 +48,26 @@ public class Resource extends AbstractDomainObject{
 		return name;
 	}
 
-	public void setName(String name) {
+	public Resource setName(String name) {
 		this.name = name;
+		return this;
 	}
 
 	public String getValue() {
 		return value;
 	}
 
-	public void setValue(String value) {
+	public Resource setValue(String value) {
 		this.value = value;
+		return this;
 	}
 
 	public int getPriority() {
 		return priority;
 	}
 
-	public void setPriority(int priority) {
+	public Resource setPriority(int priority) {
 		this.priority = priority;
+		return this;
 	}
 }

@@ -8,7 +8,10 @@ import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-
+/**
+ * @author Jason
+ * @date 2013-1-27 上午11:26:35
+ */
 public class SpringRequestHolder {
 	
 	/**

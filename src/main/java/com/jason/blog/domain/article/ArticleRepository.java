@@ -5,8 +5,11 @@ import java.util.Map;
 
 import com.jason.blog.infrastruture.persist.hibernate.query.Page;
 
-
-
+/**
+ * 
+ * @author Jason
+ * @date 2013-1-27 上午10:47:25
+ */
 public interface ArticleRepository {
 
 	Article get(Long id);

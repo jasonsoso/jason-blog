@@ -7,7 +7,6 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -21,7 +20,6 @@ import com.jason.blog.domain.shared.IdDomainObject;
 import com.jason.blog.infrastruture.util.ConvertUtils;
 
 
-@Entity
 public class UserInfo extends IdDomainObject{
 	private static final long serialVersionUID = 1L;
 
@@ -34,7 +32,8 @@ public class UserInfo extends IdDomainObject{
 	@NotNull(message="密码不能为空！")
 	@Size(min = 6, message="密码最少6个字符串！")
 	private String password;
-
+	
+	//@Email
 	@NotNull(message="邮箱不能为空！") 
 	@Pattern(regexp = "[0-9a-z\\-\\_A-Z]+@[0-9a-z\\-\\_A-Z]+\\.[a-z]{2,}",message="Email格式不正确！")
 	private String email;
@@ -42,10 +41,14 @@ public class UserInfo extends IdDomainObject{
 	private String phone;
 	
 	private boolean accountNonExpired = true;
+	
 	private boolean accountNonLocked = true;
+	
 	private boolean credentialsNonExpired = true;
+	
 	private boolean enabled = true;
 
+	
 	private Set<Role> roles = new HashSet<Role>();
 
 	private Map<String, String> roleMap = new HashMap<String, String>();
@@ -120,8 +123,9 @@ public class UserInfo extends IdDomainObject{
 		return truename;
 	}
 
-	public void setTruename(String trueName) {
+	public UserInfo setTruename(String trueName) {
 		this.truename = trueName;
+		return this;
 	}
 
 	public String getPassword() {
@@ -155,8 +159,9 @@ public class UserInfo extends IdDomainObject{
 		return accountNonExpired;
 	}
 
-	public void setAccountNonExpired(boolean accountNonExpired) {
+	public UserInfo setAccountNonExpired(boolean accountNonExpired) {
 		this.accountNonExpired = accountNonExpired;
+		return this;
 	}
 
 	public boolean isAccountNonLocked() {

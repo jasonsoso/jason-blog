@@ -11,8 +11,8 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 
 /**
  * 统一定义 自增id的 Domain 基类.
- * 
  * @author Jason
+ * @date 2013-1-27 上午11:23:54
  */
 public abstract class IdDomainObject implements DomainObject<IdDomainObject>, Serializable{
 

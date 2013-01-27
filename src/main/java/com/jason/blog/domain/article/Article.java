@@ -5,13 +5,15 @@ import javax.validation.constraints.Size;
 
 import com.jason.blog.domain.security.user.UserInfo;
 import com.jason.blog.domain.shared.IdDomainObject;
-
+/**
+ * 
+ * @author Jason
+ * @date 2013-1-27 上午10:47:05
+ */
 public class Article extends IdDomainObject{
-
 	private static final long serialVersionUID = 1L;
-
 	
-	@Size(min = 4, max = 128,message="标题字符串限制4~128之间")
+	@Size(min = 2, max = 128,message="标题字符串限制2~128之间")
 	private String title;
 	
 	@Size(min = 4, max = 10000,message="内容字符限制在4~10000之间")
@@ -33,6 +35,7 @@ public class Article extends IdDomainObject{
 
 	private UserInfo user;
 
+	
 	public String getTitle() {
 		return title;
 	}
@@ -118,8 +121,9 @@ public class Article extends IdDomainObject{
 		return user;
 	}
 
-	public void setUser(UserInfo user) {
+	public Article setUser(UserInfo user) {
 		this.user = user;
+		return this;
 	}
 	
 	

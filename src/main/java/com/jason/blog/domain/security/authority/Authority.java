@@ -39,16 +39,15 @@ public class Authority extends AbstractDomainObject {
 
 	public Set<String> getResourceValues() {
 		Set<String> resourceValues = new LinkedHashSet<String>();
-
 		for (Resource resource : getResources()) {
 			resourceValues.add(resource.getValue());
 		}
-
 		return resourceValues;
 	}
 
-	public void setResources(Set<Resource> resources) {
+	public Authority setResources(Set<Resource> resources) {
 		this.resources = resources;
+		return this;
 	}
 
 	public Map<String, String> getResourceMap() {
@@ -75,16 +74,18 @@ public class Authority extends AbstractDomainObject {
 		return name;
 	}
 
-	public void setName(String name) {
+	public Authority setName(String name) {
 		this.name = name;
+		return this;
 	}
 
 	public String getDisplayName() {
 		return displayName;
 	}
 
-	public void setDisplayName(String displayName) {
+	public Authority setDisplayName(String displayName) {
 		this.displayName = displayName;
+		return this;
 	}
 
 }

@@ -9,6 +9,11 @@ import javax.persistence.MappedSuperclass;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.hibernate.annotations.GenericGenerator;
 
+/**
+ * 统一定义 uuid 的 Domain 基类.
+ * @author Jason
+ * @date 2013-1-27 上午11:24:08
+ */
 @MappedSuperclass
 public abstract class AbstractDomainObject implements DomainObject<AbstractDomainObject>, Serializable {
 	private static final long serialVersionUID = 1L;
