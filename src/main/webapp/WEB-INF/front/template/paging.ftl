@@ -1,22 +1,22 @@
 <#assign totalPages="${(page.totalPages gt 2000)?string('2000',page.totalPages)}" >
-
+<ul>
 <#if totalPages?number gt 1>
 	<#if (page.pageNo?number) gt 1>
-		<a class="previous-page" href="${pagingUrl}/page/${((page.pageNo?number-1) gt 0)?string(page.pageNo?number-1,page.pageNo?number)}">上一页</a>
+		<li><a href="${pagingUrl}/page/${((page.pageNo?number-1) gt 0)?string(page.pageNo?number-1,page.pageNo?number)}">&lt; 上一页</a></li>
 	</#if>
 	<#if page.pageNo?number == 1>
-		<a class="previous-page" href="${pagingUrl}/page/1">1</a>&nbsp;
+		<li class="active"><a>1</a></li>&nbsp;
 	<#else>
-		<a href="${pagingUrl }/page/1">1</a>&nbsp;
+		<li><a href="${pagingUrl }/page/1">1</a></li>&nbsp;
 	</#if>
 	<#if totalPages?number gt 0>
 		<#if page.pageNo?number lt 10>
 			<#if page.pageNo?number gte 2>
 			<#list 2..page.pageNo?number as i>
 				<#if page.pageNo?number==i>
-					<a class="previous-page" href="${pagingUrl }/page/${i}">${i}</a>&nbsp;
+					<li class="active"><a>${i}</a></li>&nbsp;
 				<#else>
-					<a href="${pagingUrl }/page/${i}">${i}</a>&nbsp;  
+					<li><a href="${pagingUrl }/page/${i}">${i}</a></li>&nbsp;  
 				</#if>
 			</#list>
 			</#if>
@@ -24,35 +24,37 @@
 			  ...&nbsp;  
 			  <#list page.pageNo?number-4..page.pageNo?number as i>
 				<#if page.pageNo?number==i>
-					<a class="previous-page" href="${pagingUrl }/page/${i}">${i}</a>&nbsp;
+					<li class="active"><a>${i}</a></li>&nbsp;
 				<#else>
-					<a href="${pagingUrl }/page/${i}">${i}</a>&nbsp;  
+					<li><a href="${pagingUrl }/page/${i}">${i}</a></li>&nbsp;  
 				</#if>
 			  </#list>
 		</#if>
 		<#if page.pageNo?number gte totalPages?number-4 || totalPages?number-4 lte 0>
 			<#if page.pageNo?number+1 lte totalPages?number>
 			<#list page.pageNo?number+1..totalPages?number as i>
-				<a href="${pagingUrl }/page/${i}">${i}</a>&nbsp;  
+				<li><a href="${pagingUrl }/page/${i}">${i}</a></li>&nbsp;  
 				<#if page.pageNo?number == i>
-					<a class="previous-page" href="${pagingUrl }/page/${i}">${i}</a>&nbsp;
+					<li class="active"><a>${i}</a></li>&nbsp;
 				</#if>
 			</#list>
 			</#if>
 		<#else>
 			<#list page.nextPage..page.pageNo?number+4 as i>
 				<#if page.pageNo?number == i>
-					<a class="previous-page"  href="${pagingUrl }/page/${i}">${i}</a>&nbsp;
+					<li class="active"><a>${i}</a></li>&nbsp;
 				<#else>
-					<a href="${pagingUrl }/page/${i}">${i}</a>&nbsp;  
+					<li><a href="${pagingUrl }/page/${i}">${i}</a></li>&nbsp;  
 				</#if>
 			</#list>
 			  ...&nbsp;  
-			  <a href="${pagingUrl }/page/${totalPages}">${totalPages}</a>&nbsp;  
+			  <li><a href="${pagingUrl }/page/${totalPages}">${totalPages}</a></li>&nbsp;  
 		</#if>
 		<#if page.pageNo?number lt totalPages?number>
-			<a class="next-page" href="${pagingUrl }/page/${((page.nextPage) lt totalPages?number)?string(page.nextPage,totalPages?number)}">下一页</a>
+			<li><a href="${pagingUrl }/page/${((page.nextPage) lt totalPages?number)?string(page.nextPage,totalPages?number)}">下一页 &gt;</a></li>
 		</#if>
 	</#if>
 	
 </#if>
+
+</ul>

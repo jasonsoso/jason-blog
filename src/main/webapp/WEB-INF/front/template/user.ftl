@@ -28,7 +28,7 @@
               </section>
            </#list>
            <div class="pagination pagination-centered">
-               <#assign pagingUrl="${ctx}/user/${user.id}/blog">
+               <#assign pagingUrl="${ctx}/${user.username}">
                <#include  "paging.ftl">
            </div>
           
@@ -41,7 +41,7 @@
             <div class="thumbnail">
                   <img class="img-polaroid" src="${ctx}/resources/images/me.png" alt="">
                   <div class="caption">
-                    <h3><a href="${ctx}/user/${user.id}">${user.username}</a></h3>
+                    <h3><a href="${ctx}/${user.username}">${user.username}</a></h3>
                     <p>Love a person is not easy</p>
                     <p><a href="#" class="btn">关注我</a></p>
                   </div>

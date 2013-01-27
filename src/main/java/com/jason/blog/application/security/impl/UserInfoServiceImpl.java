@@ -46,4 +46,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return userInfoRepository.queryPage(page, hql, values);
 	}
 
+	@Override
+	public UserInfo queryByName(String username) {
+		return userInfoRepository.queryByName(username);
+	}
+
 }

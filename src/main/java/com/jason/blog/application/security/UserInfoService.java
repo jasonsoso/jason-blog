@@ -27,6 +27,12 @@ public interface UserInfoService {
 	 * @return
 	 */
 	UserInfo get(Long id);
+	/**
+	 * 
+	 * @param username
+	 * @return
+	 */
+	UserInfo queryByName(String username);
 
 	/**
 	 * 

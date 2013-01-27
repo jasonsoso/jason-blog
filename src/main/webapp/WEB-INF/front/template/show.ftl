@@ -60,7 +60,7 @@
             <div class="thumbnail">
                   <img class="img-polaroid" src="${ctx}/resources/images/me.png" alt="">
                   <div class="caption">
-                    <h3><a href="${ctx}/user/${article.user.id}">${article.user.username}</a></h3>
+                    <h3><a href="${ctx}/${article.user.username}">${article.user.username}</a></h3>
                     <p>Love a person is not easy</p>
                     <p><a href="#" class="btn">关注我</a></p>
                   </div>

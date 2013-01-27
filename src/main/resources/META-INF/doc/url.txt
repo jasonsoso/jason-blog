@@ -1,17 +1,11 @@
 规划url
 
 
-printReceiptView
-printReceiptViewReal
-
 前端展示页：
-个人首页
-/u/${user_name}
-个人博客
-/u/${user_name}/blog
-个人相册
-/u/${user_name}/album
-/u/${user_name}/photo
+个人首页/个人博客
+/${username}
+/${username}/page/{pageNo}
+
 
 
 后端维护页面

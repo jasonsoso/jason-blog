@@ -9,6 +9,7 @@ import javax.validation.ValidatorFactory;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 
 public class UserInfoTest {
 	/**
@@ -27,6 +28,18 @@ public class UserInfoTest {
 			System.out.println(constraintViolation.getPropertyPath());
 		}
 		Assert.assertTrue(constraintViolations.size()>0);
+	}
+	/**
+	 * 根据用户名和密码 生成加密密码
+	 */
+	@Test
+	public void testEncodePassword(){
+		UserInfo user = new UserInfo()
+			.setUsername("admin123")
+			.setPassword("admin123");
+		
+		user.encodePassword(new Md5PasswordEncoder());
+		System.out.println(user.getPassword());
 	}
 
 }

@@ -14,17 +14,16 @@ import com.jason.blog.domain.article.Article;
 import com.jason.blog.domain.security.user.UserInfo;
 import com.jason.blog.infrastruture.persist.hibernate.query.HQLQuery;
 import com.jason.blog.infrastruture.persist.hibernate.query.Page;
+import com.jason.blog.interfaces.exception.ResourceNotFoundException;
 import com.jason.blog.interfaces.support.ControllerSupport;
 
 
-
 /**
- * 
+ * 个人中心 个人首页 个人博客首页
  * @author Jason
- *
+ * @date 2013-1-27 下午08:56:37
  */
 @Controller
-@RequestMapping(value = "/user")
 public class UserController extends ControllerSupport {
 	
 	@Autowired
@@ -34,28 +33,27 @@ public class UserController extends ControllerSupport {
 	private ArticleService articleService;
 
 	/*--------------------华丽的分割------------------------*/
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String index(@PathVariable("id")Long id,Model model){
-		return blogList(id, 1, model);
-	}
 	
-	@RequestMapping(value = "/{id}/blog", method = RequestMethod.GET)
-	public String blogList(@PathVariable("id")Long id,Model model){
-		return blogList(id, 1, model);
+	@RequestMapping(value = "/{username}", method = RequestMethod.GET)
+	public String index(@PathVariable("username")String username,Model model){
+		return blogList(username, 1, model);
 	}
-	
-	@RequestMapping(value = "/{id}/blog/page/{pageNo}", method = RequestMethod.GET)
-	public String blogList(@PathVariable("id")Long id,@PathVariable("pageNo")int pageNo,Model model) {
+
+	@RequestMapping(value = "/{username}/page/{pageNo}", method = RequestMethod.GET)
+	public String blogList(@PathVariable("username")String username,@PathVariable("pageNo")int pageNo,Model model) {
 		Page<Article> page = new Page<Article>().setPageNo(pageNo).setPageSize(2);
 		
-		UserInfo user = userInfoService.get(id);
+		UserInfo user = userInfoService.queryByName(username);
+		
 		if(null != user){
 			HQLQuery query = new HQLQuery().table("select a from Article a join a.user u")
-											.eq("u.id", id)
+											.eq("u.username", username)
 											.orderBy("a.createdAt desc");
 			
 			page = articleService.queryPage(page, query.hql(), query.values());
 			model.addAttribute(page).addAttribute("user",user);
+		}else{
+			throw new ResourceNotFoundException();//404
 		}
 		
 		return "WEB-INF/front/template/user";

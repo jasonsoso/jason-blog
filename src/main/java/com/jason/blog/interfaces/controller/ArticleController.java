@@ -20,6 +20,7 @@ import com.jason.blog.domain.shared.EntityUtils;
 import com.jason.blog.infrastruture.persist.hibernate.query.HQLQuery;
 import com.jason.blog.infrastruture.persist.hibernate.query.Page;
 import com.jason.blog.infrastruture.spring.security.SecurityHolder;
+import com.jason.blog.interfaces.exception.ResourceNotFoundException;
 import com.jason.blog.interfaces.support.ControllerSupport;
 
 
@@ -168,11 +169,15 @@ public class ArticleController extends ControllerSupport {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String show(@PathVariable("id") Long id, Model model) {
 		Article article = articleService.get(id);
-		Article prev = articleService.getPrev(article);
-		Article next = articleService.getNext(article);
-		model.addAttribute(article)
-			 .addAttribute("prev",prev)
-			 .addAttribute("next",next);
+		if(null!=article){
+			Article prev = articleService.getPrev(article);
+			Article next = articleService.getNext(article);
+			model.addAttribute(article)
+			 	.addAttribute("prev",prev)
+			 	.addAttribute("next",next);
+		}else{
+			throw new ResourceNotFoundException();
+		}
 		return "WEB-INF/front/template/show";
 	}
 	/**
