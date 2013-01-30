@@ -29,7 +29,7 @@
            </#list>
            <div class="pagination pagination-centered">
                <#assign pagingUrl="${ctx}/${user.username}">
-               <#include  "paging.ftl">
+               <#include  "page.ftl">
            </div>
           
         </div>

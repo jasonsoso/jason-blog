@@ -159,6 +159,8 @@ public class ArticleController extends ControllerSupport {
 		return REDIRECT_LIST;
 	}
 	
+	
+	
 	//----------------------------- 华丽的 分割符号--------------------------------
 	
 	/**
