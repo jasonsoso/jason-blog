@@ -10,6 +10,7 @@ import com.jason.blog.application.article.ArticleService;
 import com.jason.blog.domain.article.Article;
 import com.jason.blog.domain.article.ArticleRepository;
 import com.jason.blog.infrastruture.persist.hibernate.query.Page;
+import com.jason.blog.infrastruture.util.html.SubStringHTML;
 
 @Transactional
 public class ArticleServiceImpl implements ArticleService {
@@ -28,6 +29,7 @@ public class ArticleServiceImpl implements ArticleService {
 
 	@Override
 	public void store(Article entity) {
+		entity.setSummary(SubStringHTML.subStringHTML(entity.getContent(), 300));
 		articleRepository.store(entity);
 	}
 

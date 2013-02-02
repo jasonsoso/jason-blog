@@ -41,7 +41,7 @@ public class UserController extends ControllerSupport {
 
 	@RequestMapping(value = "/{username}/page/{pageNo}", method = RequestMethod.GET)
 	public String blogList(@PathVariable("username")String username,@PathVariable("pageNo")int pageNo,Model model) {
-		Page<Article> page = new Page<Article>().setPageNo(pageNo).setPageSize(2);
+		Page<Article> page = new Page<Article>().setPageNo(pageNo).setPageSize(5);
 		
 		UserInfo user = userInfoService.queryByName(username);
 		
