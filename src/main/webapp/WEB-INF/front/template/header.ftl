@@ -15,7 +15,7 @@
                     <ul class="nav">
                       <li class="active"><a href="#">首页</a></li>
                       <li><a href="#">博客</a></li>
-                      <li><a href="#">团购导航</a></li>
+                      <!--<li><a href="#">团购导航</a></li>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -27,13 +27,13 @@
                           <li><a href="#">Separated link</a></li>
                           <li><a href="#">One more separated link</a></li>
                         </ul>
-                      </li>
+                      </li>-->
                     </ul>
                     <form class="navbar-search pull-left" action="">
                       <input type="text" class="search-query span2" placeholder="Search">
                     </form>
                     <ul class="nav pull-right">
-                      <li><a href="#">Link</a></li>
+                      <!--<li><a href="#">Link</a></li>-->
                       <li class="divider-vertical"></li>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jason <b class="caret"></b></a>

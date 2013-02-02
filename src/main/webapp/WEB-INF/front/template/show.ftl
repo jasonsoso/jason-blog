@@ -15,7 +15,7 @@
         <!--left start-->
         <div class="span8">
             
-          <section>
+          <section class="article-section bg-white">
               <div class="page-header">
                 <h2>${article.title}</h2>
               </div>
@@ -57,7 +57,7 @@
         <!--right start-->
         <div class="span4">
 
-            <div class="thumbnail">
+            <div class="thumbnail bg-white">
                   <img class="img-polaroid" src="${ctx}/resources/images/me.png" alt="">
                   <div class="caption">
                     <h3><a href="${ctx}/${article.user.username}">${article.user.username}</a></h3>
