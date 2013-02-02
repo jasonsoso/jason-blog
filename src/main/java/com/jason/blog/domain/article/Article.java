@@ -16,6 +16,9 @@ public class Article extends IdDomainObject{
 	@Size(min = 2, max = 128,message="标题字符串限制2~128之间")
 	private String title;
 	
+	@Size(min = 4, max = 3000)
+	private String summary;		//摘要
+	
 	@Size(min = 4, max = 10000,message="内容字符限制在4~10000之间")
 	private String content;
 	
@@ -123,6 +126,15 @@ public class Article extends IdDomainObject{
 
 	public Article setUser(UserInfo user) {
 		this.user = user;
+		return this;
+	}
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public Article setSummary(String summary) {
+		this.summary = summary;
 		return this;
 	}
 	
