@@ -11,10 +11,11 @@
     <#include "header.ftl" /><!--head-->
     
     <div class="container">
-      
-      <div class="row-fluid">
+      <!--
+      <div class="row-fluid">-->
         
         <!--left start-->
+        <!--
         <div class="span8">
         
             <div class="bs-docs-example">
@@ -48,23 +49,13 @@
             </div>
               
               
-        </div>
+        </div>-->
         <!--left end-->
         
         <!--right start-->
+        <!---
         <div class="span4">
 
-            <ul id="myTab" class="nav nav-tabs">
-              <li class="active"><a href="#home" data-toggle="tab">最新博客</a></li>
-              <li><a href="#profile" data-toggle="tab">最热博主</a></li>
-              <!--<li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多 <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#dropdown1" data-toggle="tab">@fat</a></li>
-                  <li><a href="#dropdown2" data-toggle="tab">@mdo</a></li>
-                </ul>
-              </li>-->
-            </ul>
             <div id="myTabContent" class="tab-content">
               <div class="tab-pane fade in active" id="home">
               
@@ -83,25 +74,25 @@
               <div class="tab-pane fade" id="profile">
                 <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. </p>
               </div>
-              <!--<div class="tab-pane fade" id="dropdown1">
+              <div class="tab-pane fade" id="dropdown1">
                 <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
               </div>
               <div class="tab-pane fade" id="dropdown2">
                 <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
-              </div>-->
+              </div>
             </div>
 
 
-        </div>
+        </div>-->
         <!--right end-->
         
-        
-      </div>
+       <!--
+      </div>-->
         <div id="content" class="row-fluid">
              
              
              
-<div class="list-widget">
+<div class="list-widget list-init">
     <a href="/jkkorn" title="jkkorn"><img src="https://secure.gravatar.com/avatar/9458ebc0d4ecd98cca53e2b9bb74c613/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
     <div class="list-head">
         <h3><a href="/jkkorn/great-essays">Great essays</a></h3>
@@ -130,7 +121,7 @@
     </ul>
 </div>
 
-<div class="list-widget">
+<div class="list-widget list-init">
     <a href="/rickyyean" title="rickyyean"><img src="https://secure.gravatar.com/avatar/967de1a609c97aac1aaffc452df791d7/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
     <div class="list-head">
         <h3><a href="/rickyyean/profiles-of-people">Profiles of people</a></h3>
@@ -160,7 +151,7 @@
 </div>
 
 
-<div class="list-widget">
+<div class="list-widget list-init">
     <a href="/jg" title="jg"><img src="https://secure.gravatar.com/avatar/b0734a381b23823745c79e541d530068/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
     <div class="list-head">
         <h3><a href="/jg/beautiful-landing-pages">Beautiful Landing Pages</a></h3>
@@ -190,7 +181,7 @@
 </div>
 
 
-<div class="list-widget">
+<div class="list-widget list-init">
     <a href="/jacksometer" title="jacksometer"><img src="https://secure.gravatar.com/avatar/21d340eb4f8c700ba2efd32666e9bdab/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
     <div class="list-head">
         <h3><a href="/jacksometer/photojournalism">Photojournalism</a></h3>
@@ -220,7 +211,7 @@
 </div>
 
 
-<div class="list-widget">
+<div class="list-widget list-init">
     <a href="/michaelchen" title="michaelchen"><img src="https://secure.gravatar.com/avatar/36f60c678f72e8659ffe07cb26773a26/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
     
     <div class="list-head">
@@ -238,7 +229,7 @@
 </div>
 
 
-<div class="list-widget">
+<div class="list-widget list-init">
     <a href="/steve8708" title="steve8708"><img src="https://secure.gravatar.com/avatar/28645e25065f112e3e2acce166982653/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
     <div class="list-head">
         <h3><a href="/steve8708/js-performance">JS performance</a></h3>
@@ -268,7 +259,7 @@
 </div>
 
 
-<div class="list-widget">
+<div class="list-widget list-init">
     <a href="/steve8708" title="steve8708"><img src="https://secure.gravatar.com/avatar/28645e25065f112e3e2acce166982653/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
     <div class="list-head">
         <h3><a href="/steve8708/js-performance">JS performance</a></h3>
@@ -304,6 +295,7 @@
     </div>
 
 <#include "common-footer.ftl" />
+<script src="${ctx }/resources/js/jquery.masonry.min.js"></script>
 <script type="text/javascript">
 
 $(function(){
