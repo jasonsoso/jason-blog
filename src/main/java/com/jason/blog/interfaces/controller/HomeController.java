@@ -23,26 +23,6 @@ public class HomeController {
 		return "login";
 	}
 	
-	@RequestMapping(value="/admin/header", method=RequestMethod.GET)
-	public String adminHeader() {
-		return "admin/header";
-	}
-	
-	@RequestMapping(value="/admin/left", method=RequestMethod.GET)
-	public String adminLeft() {
-		return "admin/left";
-	}
-	
-	@RequestMapping(value="/admin/right", method=RequestMethod.GET)
-	public String adminRight() {
-		return "admin/right";
-	}
-	
-	@RequestMapping(value="/admin/footer", method=RequestMethod.GET)
-	public String adminFooter() {
-		return "admin/footer";
-	}
-	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String home(){
 		return "login";

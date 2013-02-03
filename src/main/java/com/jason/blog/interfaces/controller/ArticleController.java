@@ -182,13 +182,26 @@ public class ArticleController extends ControllerSupport {
 		}
 		return "WEB-INF/front/template/show";
 	}
+	
+	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
+	public String index(Model model){
+		return index(1, model);
+	}
+	
 	/**
 	 * @param id
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String index(Model model) {
+	@RequestMapping(value = "/page/{pageNo}", method = RequestMethod.GET)
+	public String index(@PathVariable("pageNo")int pageNo,Model model) {
+		Page<Article> page = new Page<Article>().setPageNo(pageNo).setPageSize(10);
+		
+		HQLQuery query = new HQLQuery().table("select a from Article a")
+											.orderBy("a.createdAt desc");
+			
+		page = articleService.queryPage(page, query.hql(), query.values());
+		model.addAttribute(page);
 		return "WEB-INF/front/template/index";
 	}
 	

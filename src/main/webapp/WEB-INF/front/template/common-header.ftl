@@ -5,7 +5,7 @@
 <link href="${ctx }/resources/bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="${ctx }/resources/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 <link href="${ctx }/resources/js/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet"/>
-<link href="${ctx }/resources/css/admin.css" rel="stylesheet">
+<link href="${ctx }/resources/css/front.css" rel="stylesheet">
 
 <!--[if lt IE 9]>
    <script src="${ctx }/resources/js/html5.js"></script>

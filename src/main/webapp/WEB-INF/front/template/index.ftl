@@ -91,205 +91,32 @@
         <div id="content" class="row-fluid">
              
              
-             
-<div class="list-widget list-init">
-    <a href="/jkkorn" title="jkkorn"><img src="https://secure.gravatar.com/avatar/9458ebc0d4ecd98cca53e2b9bb74c613/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
+             <#list page.result as article>
+<div class="list-widget list-init" style="padding: 5px;">
+    <a target="_blank" href="${ctx}/${article.user.username}" title="${article.user.username}">
+        <img src="${ctx}/resources/images/me.png" width="42" height="42" class="avatar" style="float:left">
+    </a>
     <div class="list-head">
-        <h3><a href="/jkkorn/great-essays">Great essays</a></h3>
-        <div class="list-meta">by <a href="/jkkorn">jkkorn</a> · 170 followers</div>
+        <h3><a target="_blank" href="${ctx}/article/${article.id}">${article.title}</a></h3>
+        <div class="list-meta">by <a target="_blank" href="${ctx}/${article.user.username}">${article.user.username}</a></div>
     </div>
-    <ul>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=www.reddit.com');"></i>
-            <div>
-                <a href="/jkkorn/great-essays">bikewithoutafish comments on I would like an actual lesson in How Not To Give a Fuck.</a>
-            </div>
-        </li>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=blakemasters.tumblr.com');"></i>
-            <div>
-                <a href="/jkkorn/great-essays">Peter Thiel’s CS183: Startup - Class 9 Notes Essay</a>
-            </div>
-        </li>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=blakemasters.tumblr.com');"></i>
-            <div>
-                <a href="/jkkorn/great-essays">Peter Thiel’s CS183: Startup - Class 9 Notes Essay</a>
-            </div>
-        </li>
-        <li><a href="/jkkorn/great-essays" class="list-view">View all 21 clips ›</a></li>
-    </ul>
-</div>
-
-<div class="list-widget list-init">
-    <a href="/rickyyean" title="rickyyean"><img src="https://secure.gravatar.com/avatar/967de1a609c97aac1aaffc452df791d7/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
-    <div class="list-head">
-        <h3><a href="/rickyyean/profiles-of-people">Profiles of people</a></h3>
-        <div class="list-meta">by <a href="/rickyyean">rickyyean</a> · 218 followers</div>
+    <div>
+        ${article.summary}
     </div>
-    <ul>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=management.fortune.cnn.com');"></i>
-            <div>
-                <a href="/rickyyean/profiles-of-people">Steve Jobs vs. Sam Walton: The tale of the tape - Fortune Management</a>
-            </div>
-        </li>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=sports.yahoo.com');"></i>
-            <div>
-                <a href="/rickyyean/profiles-of-people">After disappointing breakup with Knicks, Jeremy Lin building a better relationship with Rockets - Yahoo! Sports</a>
-            </div>
-        </li>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=www.fastcompany.com');"></i>
-            <div>
-                <a href="/rickyyean/profiles-of-people">Bill Nguyen: The Boy In The Bubble | Fast Company</a>
-            </div>
-        </li>
-        <li><a href="/rickyyean/profiles-of-people" class="list-view">View all 7 clips ›</a></li>
-    </ul>
 </div>
-
-
-<div class="list-widget list-init">
-    <a href="/jg" title="jg"><img src="https://secure.gravatar.com/avatar/b0734a381b23823745c79e541d530068/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
-    <div class="list-head">
-        <h3><a href="/jg/beautiful-landing-pages">Beautiful Landing Pages</a></h3>
-        <div class="list-meta">by <a href="/jg">jg</a> · 15176 followers</div>
-    </div>
-    <ul>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=wantful.com');"></i>
-            <div>
-                <a href="/jg/beautiful-landing-pages">Wantful</a>
-            </div>
-        </li>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=www.onswipe.com');"></i>
-            <div>
-                <a href="/jg/beautiful-landing-pages">Onswipe</a>
-            </div>
-        </li>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=appstack.com');"></i>
-            <div>
-                <a href="/jg/beautiful-landing-pages">Appstack | Mobile Made Easy</a>
-            </div>
-        </li>
-        <li><a href="/jg/beautiful-landing-pages" class="list-view">View all 32 clips ›</a></li>
-    </ul>
-</div>
-
-
-<div class="list-widget list-init">
-    <a href="/jacksometer" title="jacksometer"><img src="https://secure.gravatar.com/avatar/21d340eb4f8c700ba2efd32666e9bdab/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
-    <div class="list-head">
-        <h3><a href="/jacksometer/photojournalism">Photojournalism</a></h3>
-        <div class="list-meta">by <a href="/jacksometer">jacksometer</a> · 177 followers</div>
-    </div>
-    <ul>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=www.theatlantic.com');"></i>
-            <div>
-                <a href="/jacksometer/photojournalism">A Cold Winter in Afghanistan</a>
-            </div>
-        </li>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=www.hidden-lives.org.uk');"></i>
-            <div>
-                <a href="/jacksometer/photojournalism">Hidden Lives. The Untold Story of Urban Refugees</a>
-            </div>
-        </li>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=the-war-diaries.com');"></i>
-            <div>
-                <a href="/jacksometer/photojournalism">Iran like it was 1999</a>
-            </div>
-        </li>
-        <li><a href="/jacksometer/photojournalism" class="list-view">View all 88 clips ›</a></li>
-    </ul>
-</div>
-
-
-<div class="list-widget list-init">
-    <a href="/michaelchen" title="michaelchen"><img src="https://secure.gravatar.com/avatar/36f60c678f72e8659ffe07cb26773a26/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
-    
-    <div class="list-head">
-        <h3><a href="/michaelchen/design-tools">Design Tools</a></h3>
-        <div class="list-meta">by <a href="/michaelchen">michaelchen</a> · 789 followers</div>
-    </div>
-    <ul>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=grabbox.devsoft.no');"></i>
-            <div>
-                <a href="/michaelchen/design-tools">GrabBox | Simple screenshot sharing for Mac</a>
-            </div>
-        </li>
-    </ul>
-</div>
-
-
-<div class="list-widget list-init">
-    <a href="/steve8708" title="steve8708"><img src="https://secure.gravatar.com/avatar/28645e25065f112e3e2acce166982653/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
-    <div class="list-head">
-        <h3><a href="/steve8708/js-performance">JS performance</a></h3>
-        <div class="list-meta">by <a href="/steve8708">steve8708</a> · 392 followers</div>
-    </div>
-    <ul>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=engineering.linkedin.com');"></i>
-            <div>
-                <a href="/steve8708/js-performance">Blazing fast node.js: 10 performance tips from LinkedIn Mobile | LinkedIn Engineering</a>
-            </div>
-        </li>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=news.ycombinator.com');"></i>
-            <div>
-                <a href="/steve8708/js-performance">Backbone.js views done right | Hacker News</a>
-            </div>
-        </li>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=www.silverstripe.org');"></i>
-            <div>
-                <a href="/steve8708/js-performance">Javascript Performance » SilverStripe.org - Open Source CMS / Framework</a>
-            </div>
-        </li>
-        <li><a href="/steve8708/js-performance" class="list-view">View all 6 clips ›</a></li>
-    </ul>
-</div>
-
-
-<div class="list-widget list-init">
-    <a href="/steve8708" title="steve8708"><img src="https://secure.gravatar.com/avatar/28645e25065f112e3e2acce166982653/?default=https%3A%2F%2Fs3.amazonaws.com%2Fkippt-static%2Fimg%2Fdefault-avatar.jpg&amp;s=160" width="42" height="42" class="avatar" style="float:left"></a>
-    <div class="list-head">
-        <h3><a href="/steve8708/js-performance">JS performance</a></h3>
-        <div class="list-meta">by <a href="/steve8708">steve8708</a> · 392 followers</div>
-    </div>
-    <ul>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=engineering.linkedin.com');"></i>
-            <div>
-                <a href="/steve8708/js-performance">Blazing fast node.js: 10 performance tips from LinkedIn Mobile | LinkedIn Engineering</a>
-            </div>
-        </li>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=news.ycombinator.com');"></i>
-            <div>
-                <a href="/steve8708/js-performance">Backbone.js views done right | Hacker News</a>
-            </div>
-        </li>
-        <li>
-            <i class="fav" style="background-image:url('https://www.google.com/s2/u/0/favicons?domain=www.silverstripe.org');"></i>
-            <div>
-                <a href="/steve8708/js-performance">Javascript Performance » SilverStripe.org - Open Source CMS / Framework</a>
-            </div>
-        </li>
-        <li><a href="/steve8708/js-performance" class="list-view">View all 6 clips ›</a></li>
-    </ul>
-</div>
+            </#list>
+            
+           
 
 
         </div>
+        
+        <div class="pagination pagination-centered">
+             <#assign pagingUrl="${ctx}/article">
+             <#include  "page.ftl">
+        </div>
+           
+           
     <hr/>
 <#include "footer.ftl" /><!--foot-->
     </div>
