@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
 
 /**
@@ -17,6 +19,7 @@ import org.springframework.util.Assert;
  * @date 2013-2-4 下午11:36:07
  */
 public class PhotoHelper {
+	private static final  Logger logger = LoggerFactory.getLogger(PhotoHelper.class);
 
 
 	/**
@@ -52,7 +55,7 @@ public class PhotoHelper {
 
 			createThumbnailInternal(image, thumbnail, width, height);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("createThumbnail error！", e);
 		}
 	}
 
@@ -95,7 +98,7 @@ public class PhotoHelper {
 			String format = StringsHelper.suffix(dest.getName());
 			ImageIO.write(destImage, StringUtils.isBlank(format) ? "jpg" : format, dest);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("watermark error！", e);
 		}
 	}
 
