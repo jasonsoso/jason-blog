@@ -17,4 +17,6 @@ public interface UserInfoRepository {
 	void store(UserInfo entity);
 
 	void delete(Long id);
+	
+	void updatePhoto(String photo, UserInfo user) ;
 }

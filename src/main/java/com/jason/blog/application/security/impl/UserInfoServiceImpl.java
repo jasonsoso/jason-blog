@@ -51,4 +51,10 @@ public class UserInfoServiceImpl implements UserInfoService {
 		return userInfoRepository.queryByName(username);
 	}
 
+	@Override
+	public void updatePhoto(String photo, UserInfo user) {
+		userInfoRepository.updatePhoto(photo,user);
+		
+	}
+
 }

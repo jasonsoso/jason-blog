@@ -217,7 +217,6 @@ public class UserInfoController extends ControllerSupport {
 			int year = calendar.get(Calendar.YEAR);
 			int month = calendar.get(Calendar.MONTH);
 			int date = calendar.get(Calendar.DATE);
-			System.out.println(year+"/"+month+"/"+date);
 			String ctxPath = request.getSession().getServletContext().getRealPath("/");
 			String myPath = "/resources/upload/"+ year+"-"+month+"-"+date+"/";
 			String webPath = myPath + FilesHelper.insertFileNameAndString(UUIDGenerator.getUUID(), "", FilesHelper.getFileExtensionWithDot(file.getOriginalFilename()));
@@ -229,12 +228,16 @@ public class UserInfoController extends ControllerSupport {
 				dest.getParentFile().mkdir();
 			}
 			try {
+				//upload photo
 				file.transferTo(dest);
+				//update  photo of db
+				userInfoService.updatePhoto(webPath, user);
+				
+				super.writeJsonResult(response,  new JsonModel(true, webPath));
 			} catch (Exception e) {
 				super.logger.debug("上传失败！", e);
-				new JsonModel(false, "上传失败！原因："+e.getMessage());
+				super.writeJsonResult(response,  new JsonModel(false, "上传失败！原因："+e.getMessage()));
 			}
-			super.writeJsonResult(response,  new JsonModel(true, webPath));
 		}else{
 			super.writeJsonResult(response, new JsonModel(false, "請登錄！"));
 		}

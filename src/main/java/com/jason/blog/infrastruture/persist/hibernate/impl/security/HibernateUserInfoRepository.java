@@ -19,4 +19,9 @@ public class HibernateUserInfoRepository extends HibernateRepositorySupport<Long
 		super.delete(super.get(id));
 	}
 
+	@Override
+	public void updatePhoto(String photo, UserInfo user) {
+		super.createHqlQuery("update UserInfo u set u.photo=? where u.id=?", photo,user.getId());
+	}
+
 }

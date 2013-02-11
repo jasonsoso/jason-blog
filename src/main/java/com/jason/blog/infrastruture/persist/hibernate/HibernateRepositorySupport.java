@@ -124,6 +124,23 @@ public class HibernateRepositorySupport<PK extends Serializable, T> extends Hibe
 	public Object queryUnique(String hql, Object... values) {
 		return createQuery(hql, values).uniqueResult();
 	}
+	
+	/**
+	 * @param hql
+	 * @param values
+	 * @return
+	 */
+	public int createHqlQuery(String hql, Object... values){
+		return createQuery(hql, values).executeUpdate();
+	}
+	/**
+	 * @param hql
+	 * @param values
+	 * @return
+	 */
+	public int createHqlQuery(String hql, Map<String, Object> values){
+		return createQuery(hql, values).executeUpdate();
+	}
 
 	/**
 	 * 

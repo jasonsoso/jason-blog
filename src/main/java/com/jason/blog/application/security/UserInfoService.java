@@ -50,5 +50,11 @@ public interface UserInfoService {
 	 * @return
 	 */
 	Page<UserInfo> queryPage(Page<UserInfo> page, String hql, Map<String, Object> values);
+	/**
+	 * update photo
+	 * @param photo
+	 * @param user
+	 */
+	void updatePhoto(String photo,UserInfo user);
 
 }

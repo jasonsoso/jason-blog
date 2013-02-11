@@ -40,6 +40,8 @@ public class UserInfo extends IdDomainObject{
 	
 	private String phone;
 	
+	private String photo;
+	
 	private boolean accountNonExpired = true;
 	
 	private boolean accountNonLocked = true;
@@ -153,6 +155,14 @@ public class UserInfo extends IdDomainObject{
 	public UserInfo setPhone(String phone) {
 		this.phone = phone;
 		return this;
+	}
+	
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
 	public boolean isAccountNonExpired() {
