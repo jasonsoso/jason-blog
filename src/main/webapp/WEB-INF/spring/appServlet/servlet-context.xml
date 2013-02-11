@@ -75,6 +75,7 @@
         <beans:property name="defaultStatusCode" value="500" />
     </beans:bean>
 	
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 	
 	<!-- Imports user-defined @Controller beans that process client requests -->
 	<beans:import resource="controllers.xml" />

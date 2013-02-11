@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,10 +15,11 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.jason.blog.infrastruture.util.ExceptionUtils;
+import com.jason.blog.infrastruture.util.JsonHelper;
 import com.jason.blog.interfaces.filter.FlashModel;
 import com.jason.blog.interfaces.filter.FlashModel.Message;
 import com.jason.blog.interfaces.filter.FlashModel.MessageType;
-
 
 public abstract class ControllerSupport extends MultiActionController {
 	protected Logger logger = LoggerFactory.getLogger(getClass());
@@ -62,6 +64,15 @@ public abstract class ControllerSupport extends MultiActionController {
 	public final void info(RedirectAttributes redirectAttributes,String info) {
 		FlashModel.setErrorMessage(redirectAttributes,info);
 	}
+	public static void writeJsonResult(HttpServletResponse response, Object message) {
+		try {
+			response.setContentType("text/html");
+			response.getWriter().write(String.format("%s", JsonHelper.toJsonString(message)));
+		} catch (Exception e) {
+			throw ExceptionUtils.toUnchecked(e);
+		}
+	}
+	
 
 	/**
 	 * Binder Date

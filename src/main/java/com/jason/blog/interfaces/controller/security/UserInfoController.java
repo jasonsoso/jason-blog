@@ -1,6 +1,9 @@
 package com.jason.blog.interfaces.controller.security;
 
+import java.io.File;
+import java.util.Calendar;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.apache.commons.lang.StringUtils;
@@ -12,6 +15,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jason.blog.application.security.RoleService;
@@ -22,6 +27,10 @@ import com.jason.blog.domain.shared.EntityUtils;
 import com.jason.blog.infrastruture.persist.hibernate.HibernateHelper;
 import com.jason.blog.infrastruture.persist.hibernate.query.HQLQuery;
 import com.jason.blog.infrastruture.persist.hibernate.query.Page;
+import com.jason.blog.infrastruture.spring.security.SecurityHolder;
+import com.jason.blog.infrastruture.util.FilesHelper;
+import com.jason.blog.infrastruture.util.JsonModel;
+import com.jason.blog.infrastruture.util.UUIDGenerator;
 
 import com.jason.blog.interfaces.support.ControllerSupport;
 
@@ -177,7 +186,7 @@ public class UserInfoController extends ControllerSupport {
 		success(redirectAttributes,"删除用户成功！");
 		return REDIRECT_LIST;
 	}
-
+	
 	/**
 	 * @param id
 	 * @return
@@ -189,6 +198,47 @@ public class UserInfoController extends ControllerSupport {
 		return REDIRECT_LIST;
 	}
 	
+	
+	@RequestMapping(value = "/upload", method = RequestMethod.GET)
+	public String upload() {
+		return "security/user/upload";
+	}
+	
+	
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	//@ResponseBody
+	public void upload(@RequestParam("file") MultipartFile file ,HttpServletRequest request,HttpServletResponse response) {
+		
+		UserInfo user = SecurityHolder.getCurrentUser();
+		if(null != user){
+			//做一层拦截 注意：图片类型 图片大小
+			
+			Calendar calendar = Calendar.getInstance();
+			int year = calendar.get(Calendar.YEAR);
+			int month = calendar.get(Calendar.MONTH);
+			int date = calendar.get(Calendar.DATE);
+			System.out.println(year+"/"+month+"/"+date);
+			String ctxPath = request.getSession().getServletContext().getRealPath("/");
+			String myPath = "/resources/upload/"+ year+"-"+month+"-"+date+"/";
+			String webPath = myPath + FilesHelper.insertFileNameAndString(UUIDGenerator.getUUID(), "", FilesHelper.getFileExtensionWithDot(file.getOriginalFilename()));
+
+			System.out.println("路径：" + ctxPath+webPath);  
+			
+			File dest = new File(ctxPath+webPath);
+			if(!dest.getParentFile().exists()){
+				dest.getParentFile().mkdir();
+			}
+			try {
+				file.transferTo(dest);
+			} catch (Exception e) {
+				super.logger.debug("上传失败！", e);
+				new JsonModel(false, "上传失败！原因："+e.getMessage());
+			}
+			super.writeJsonResult(response,  new JsonModel(true, webPath));
+		}else{
+			super.writeJsonResult(response, new JsonModel(false, "請登錄！"));
+		}
+	}
 	/**
 	 * username  is modified
 	 * @param origUsername
