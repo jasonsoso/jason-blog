@@ -20,7 +20,8 @@
 		<property name="locations">
 			<list>
 				<!-- 标准配置 -->
-				<value>classpath*:/application.properties</value>
+				<value>classpath*:META-INF/config/application.properties</value>
+				<value>classpath*:META-INF/config/framework.properties</value>
 			</list>
 		</property>
 	</bean>

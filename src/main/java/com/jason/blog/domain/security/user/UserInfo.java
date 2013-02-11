@@ -161,8 +161,9 @@ public class UserInfo extends IdDomainObject{
 		return photo;
 	}
 
-	public void setPhoto(String photo) {
+	public UserInfo setPhoto(String photo) {
 		this.photo = photo;
+		return this;
 	}
 
 	public boolean isAccountNonExpired() {

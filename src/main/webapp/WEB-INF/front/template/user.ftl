@@ -32,6 +32,7 @@
 </div>
 
            </#list>
+           
            <div class="pagination pagination-centered">
                <#assign pagingUrl="${ctx}/${user.username}">
                <#include  "page.ftl">
@@ -44,7 +45,7 @@
         <div class="span4">
 
             <div class="thumbnail bg-white">
-                  <img class="img-polaroid" src="${ctx}/resources/images/me.png" alt="">
+                  <img class="img-polaroid" width="130" hight="130"  src="${ctx}${user.photo}" alt="">
                   <div class="caption">
                     <h3><a href="${ctx}/${user.username}">${user.username}</a></h3>
                     <p>Love a person is not easy</p>
@@ -68,30 +69,6 @@
 
 $(function(){
     
-    init_masonry();
-    
-    function init_masonry(){
-        var $container = $('#content');
-        var gutter = 15;
-        var min_width = 350;
-        $container.imagesLoaded( function(){
-            $container.masonry({
-                itemSelector : '.list-widget',
-                gutterWidth: gutter,
-                isAnimated: true,
-                  columnWidth: function( containerWidth ) {
-                    var num_of_boxes = (containerWidth/min_width | 0);
-                    var box_width = (((containerWidth - (num_of_boxes-1)*gutter)/num_of_boxes) | 0) ;
-                    if (containerWidth < min_width) {
-                        box_width = containerWidth;
-                    }
-                    $('.list-widget').width(box_width);
-                    return box_width;
-                  }
-            });
-        });
-    }
-
     
     //代码高亮
     SyntaxHighlighter.highlight();
