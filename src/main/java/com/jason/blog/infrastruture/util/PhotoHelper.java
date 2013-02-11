@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
 
 /**
- * 
+ * jdk 图片处理
  * @author Jason
  * @date 2013-2-4 下午11:36:07
  */

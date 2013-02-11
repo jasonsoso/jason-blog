@@ -9,10 +9,20 @@ public class FilesHelper {
 	 * @param insertString
 	 * @return
 	 */
-	public static String insertStringBeforeExtension(String fileName, String insertString) {
+	public static String insertString(String fileName, String insertString) {
 		String fileNameWithoutExtension = getFileNameWithoutExtension(fileName);
 		String extension = getFileExtensionWithDot(fileName);
 		return String.format("%s%s%s", fileNameWithoutExtension, insertString, extension);
+	}
+	/**
+	 * abc_180_180.jpg
+	 * @param fileName  abc
+	 * @param insertString 180_180
+	 * @param extension .jpg
+	 * @return
+	 */
+	public static String insertFileNameAndString(String fileName, String insertString,String extension){
+		return String.format("%s_%s%s", fileName, insertString, extension);
 	}
 	/**
 	 * 
