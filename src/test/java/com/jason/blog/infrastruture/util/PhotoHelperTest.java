@@ -19,7 +19,7 @@ public class PhotoHelperTest {
 		File file =  new File(imgurl);
 		InputStream in = new FileInputStream(file);
 		//按最少比例 生成缩略图
-		PhotoHelper.createThumbnail(in, FilesHelper.insertString(file.getCanonicalPath(),"_thumb"), 300, 200);
+		PhotoHelper.createThumbnail(in, FilesHelper.insertString(file.getCanonicalPath(),"thumb"), 300, 200);
 	}
 	
 	@Test

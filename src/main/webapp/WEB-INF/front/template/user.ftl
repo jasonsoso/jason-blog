@@ -20,7 +20,7 @@
    
 <div class="list-widget" style="padding: 12px;">
     <a target="_blank" href="${ctx}/${article.user.username}" title="${article.user.username}">
-        <img src="${ctx}/resources/images/me.png" width="42" height="42" class="avatar" style="float:left">
+        <img src="${ctx}/resources/images/default.png" width="42" height="42" class="avatar" style="float:left">
     </a>
     <div class="list-head">
         <h3><a target="_blank" href="${ctx}/article/${article.id}">${article.title}</a></h3>
@@ -44,8 +44,9 @@
         <!--right start-->
         <div class="span4">
 
-            <div class="thumbnail bg-white">
-                  <img class="img-polaroid" width="130" hight="130"  src="${ctx}${user.photo}" alt="">
+            <div class="thumbnail bg-white"><!--${ctx}${user.photo}-->
+                  <img class="img-polaroid" width="130" hight="130"  src="<@jason_user_icon path="${user.photo}" type="130_130"/>" alt="">
+                  
                   <div class="caption">
                     <h3><a href="${ctx}/${user.username}">${user.username}</a></h3>
                     <p>Love a person is not easy</p>

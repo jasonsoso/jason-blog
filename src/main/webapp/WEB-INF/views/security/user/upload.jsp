@@ -184,6 +184,7 @@ div.frame {
 	        fadeSpeed: 200, 
 	        onSelectChange: preview 
 	    });
+		//$('#duck').imgAreaSelect({ x1: 120, y1: 90, x2: 280, y2: 210 });
 		function preview(img, selection) {
 		    if (!selection.width || !selection.height)
 		        return;
