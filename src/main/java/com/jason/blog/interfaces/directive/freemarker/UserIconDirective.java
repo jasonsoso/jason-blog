@@ -15,7 +15,8 @@ import freemarker.template.TemplateModel;
 import freemarker.template.TemplateScalarModel;
 
 /**
- * UserIcon URL Directive(Tags)
+ * 用户头像标签
+ * 必填值path
  * eg:<img src="<@jason_user_icon path="${user.photo}" type="130_130"/>">
  * @author Jason
  * @date 2013-2-13 下午01:03:06
