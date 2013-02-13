@@ -47,6 +47,7 @@ public class PropertiesUtils {
 	}
 
 	/**
+	 * 
 	 * @param propName
 	 * @param key
 	 * @param defaultValue
@@ -61,10 +62,10 @@ public class PropertiesUtils {
 	}
 
 	/**
-	 * 根据key值获取属性值
-	 * @param propName  属性文件名
-	 * @param key 
-	 * @return 属性值
+	 * 
+	 * @param propName
+	 * @param key
+	 * @return
 	 */
 	public static String getEntryValue(String propName, String key) {
 		Properties prop = getProperties(propName);
@@ -75,16 +76,26 @@ public class PropertiesUtils {
 	}
 
 	/**
+	 * 
 	 * @param key
 	 * @return
 	 */
 	public static String getEntryValue(String key) {
 		return getEntryValue(null, key);
 	}
-
 	/**
 	 * @param key
+	 * @param defaultValue
 	 * @return
+	 */
+	public static String getEntryDefaultValue(String key, String defaultValue) {
+		return getEntryValue(null, key, defaultValue);
+	}
+
+	/**
+	 * 
+	 * @param key
+	 * @return int
 	 */
 	public static int getIntEntryValue(String key) {
 		String value = getEntryValue(null, key);
@@ -99,8 +110,9 @@ public class PropertiesUtils {
 	}
 
 	/**
+	 * 
 	 * @param key
-	 * @return
+	 * @return long
 	 */
 	public static long getLongEntryValue(String key) {
 		String value = getEntryValue(null, key);
