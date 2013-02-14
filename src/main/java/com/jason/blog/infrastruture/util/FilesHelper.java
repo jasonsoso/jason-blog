@@ -14,6 +14,7 @@ public class FilesHelper {
 		String extension = getFileExtensionWithDot(fileName);
 		return String.format("%s%s%s%s", fileNameWithoutExtension,"_",insertString, extension);
 	}
+	
 	/**
 	 * eg: resources/upload/1.jpg -> resources/upload/1_{insertString}.jpg
 	 * @param path
@@ -49,6 +50,7 @@ public class FilesHelper {
 		}
 		return fileName;
 	}
+	
 	/**
 	 * .后缀名
 	 * @param fileName
@@ -60,8 +62,9 @@ public class FilesHelper {
 		}
 		return fileName;
 	}
+	
 	/**
-	 * 根据路径或者文件名
+	 * eg:xxx/1.jpg -> 1.jpg
 	 * @param path
 	 * @return
 	 */
@@ -69,6 +72,12 @@ public class FilesHelper {
 		String fileName = path.substring(path.lastIndexOf("/")+1);
 		return fileName;
 	}
+	
+	/**
+	 * eg:xxx/1.jpg -> xxx/
+	 * @param path
+	 * @return
+	 */
 	public static String getFilePathFormUrl(String path){
 		String filePath = path.substring(0,path.lastIndexOf("/")+1);
 		return filePath;

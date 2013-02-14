@@ -12,7 +12,6 @@ import freemarker.core.Environment;
 import freemarker.template.TemplateDirectiveBody;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
-import freemarker.template.TemplateScalarModel;
 
 /**
  * 用户头像标签
@@ -30,21 +29,16 @@ public class UserIconDirective extends FreemarkerDirectiveSupport{
 	protected void doExecute(Environment env, Map<String, ?> params,
 			TemplateModel[] loopVars, TemplateDirectiveBody body)
 			throws TemplateException, IOException {
-		TemplateScalarModel typeModel = (TemplateScalarModel)params.get(TYPE_PARAM);
-		TemplateScalarModel pathModel = (TemplateScalarModel)params.get(PATH_PARAM);
-		String type = ThumbType.THUMB_SOURCE.asType();//默认源文件
-		if(super.isNotBlankScalarModel(typeModel)){
-			type = typeModel.getAsString();
-		}
-		String path = "resources/images/default.jpg";
-		if(super.isNotBlankScalarModel(pathModel)){
-			path = pathModel.getAsString();
-		}
-		String truefileName = FilesHelper.insertStringForPath(path, type);
+		//接受参数
+		String type = super.getStringValueByParams(params, TYPE_PARAM, ThumbType.THUMB_SOURCE.asType());//默认源文件
+		String path = super.getStringValueByParams(params, PATH_PARAM, "resources/images/default.jpg");//默认源文件
+
+		//拼装文件
+		String trueFileName = FilesHelper.insertStringForPath(path, type);
 		String photoServerDomain = PropertiesUtils.getEntryValue("photoServer.domain");
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append(photoServerDomain).append(truefileName);
+		sb.append(photoServerDomain).append(trueFileName);
 		
 		env.getOut().write(sb.toString());
 		/*if(null!=body){
