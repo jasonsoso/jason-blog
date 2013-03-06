@@ -14,15 +14,31 @@
 		<org.springframework.security-version>3.0.4.RELEASE</org.springframework.security-version>
 		<org.aspectj-version>1.7.1</org.aspectj-version>
 		<org.slf4j-version>1.7.2</org.slf4j-version>
+		<package.environment>dev</package.environment>
 	</properties>
+	<profiles>
+	   <profile>
+	       <id>product</id>
+	       <properties>
+	           <package.environment>product</package.environment>
+	       </properties>
+	   </profile>
+	   <profile>
+           <id>test</id>
+           <properties>
+               <package.environment>test</package.environment>
+           </properties>
+       </profile>
+	</profiles>
+	
 	<dependencies>
 	
 		<!-- Spring -->
-<dependency>
+<!-- <dependency>
    <groupId>org.hibernate</groupId>
    <artifactId>hibernate-entitymanager</artifactId>
    <version>3.4.0.GA</version>
-</dependency>
+</dependency> -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -471,6 +487,26 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.5</version>
+            </plugin>
 		</plugins>
+		
+		<resources>
+		  <resource>
+            <directory>src/main/resources</directory>
+            <excludes>
+                <exclude>**/META-INF/config.*/**</exclude>
+            </excludes>
+          </resource>
+          <resource>
+               <directory>src/main/resources/META-INF/config.${package.environment}</directory>
+               <filtering>true</filtering>
+               <targetPath>META-INF/config</targetPath>
+          </resource>
+          
+		</resources>
+		
 	</build>
 </project>
