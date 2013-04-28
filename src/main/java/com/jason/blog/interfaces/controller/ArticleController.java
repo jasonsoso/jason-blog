@@ -60,7 +60,7 @@ public class ArticleController extends ControllerSupport {
 	public String list(Page<Article> page, HttpServletRequest request, Model model) {
 
 		HQLQuery query = new HQLQuery().table("Article")
-									.orderBy("id");
+									.orderBy("updatedAt desc");
 		page = articleService.queryPage(page, query.hql(), query.values());
 		
 		model.addAttribute(page);
