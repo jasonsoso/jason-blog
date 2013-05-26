@@ -82,7 +82,7 @@
 
 $(function(){
     
-    init_masonry();
+    //init_masonry();
     
     function init_masonry(){
         var $container = $('#content');
